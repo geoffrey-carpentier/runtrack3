@@ -10,6 +10,12 @@
 </head>
 
 <body>
+    <h1>Afficher les jours de la semaine en JS</h1>
+
+    <p>" Créez une fonction “afficherjourssemaines”. Cette fonction ne prend pas de paramètre.
+Créez un tableau de strings “jourssemaines” qui contient l’ensemble des jours de la
+semaine, du Lundi au Dimanche. Ensuite à l’aide d’une boucle for (for!)Affichez un par
+un ces jours."</p>
     <!-- ... -->
 </body>
 
