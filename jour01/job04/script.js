@@ -1,5 +1,5 @@
-function bissextile(annee) { 
-    let result = (annee % 4 === 0 && annee % 100 != 0) || annee % 400 === 0 
+function bissextile(annee) {
+    let result = (annee % 4 === 0 && annee % 100 != 0) || annee % 400 === 0
         ? `${annee} est une année bissextile`    // true (année bissextile)
         : `${annee} est une année commune`;      // false (année non bissextile)
     console.log(result);
