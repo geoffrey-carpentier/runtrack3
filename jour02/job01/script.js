@@ -1,6 +1,6 @@
 function citation() {
-    let contenu = document.getElementById("citation").textContent;
-    console.log(contenu);
+    let content = document.getElementById("citation").textContent;
+    console.log(content);
 }
 
 document.getElementById("button").addEventListener("click", citation);

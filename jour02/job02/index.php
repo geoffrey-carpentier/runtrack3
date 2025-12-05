@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <article id="citation">La vie a beaucoup plus d’imagination que nous</article>
-    <button id="button">Cliquez pour afficher la citation</button>
+    <button id="button">Cliquez pour voir/cacher la citation</button>
+    <article id="citation" style="display: none;">L'important n'est pas la chute, mais l'atterrissage.</article>
 </body>
 </html>
