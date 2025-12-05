@@ -1,7 +1,15 @@
+let keylogger = document.getElementById("keylogger");
+
 function addText(e) {
-    ? //Si
-    keylogger.value + e.key + e.key
-    : //Sinon
-    keylogger.value + e.key;
-}// Window keypress (Event e) => fonction (Event e)
-window.addEventListener('keypress', (e) => addText(e)); //Ecouter
+    e.preventDefault();
+    if (e.key.match(/[a-z]/)) {  // Vérifie si c'est une lettre a-z
+        if (document.activeElement === keylogger) {
+            keylogger.value += e.key + e.key;  // Ajoute deux fois si focus dans textarea
+        } else {
+            keylogger.value += e.key;  // Ajoute une fois sinon
+        }
+    }
+}
+console.log(keylogger);
+
+window.addEventListener('keypress', addText);

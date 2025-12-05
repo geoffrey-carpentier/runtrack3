@@ -8,6 +8,6 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-   <textarea id="input"></textarea>
+    <textarea id="keylogger"></textarea>
 </body>
 </html>
