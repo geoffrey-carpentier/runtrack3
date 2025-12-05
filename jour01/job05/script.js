@@ -8,3 +8,12 @@ function afficherjourssemaines() {  // La fonction ne prend pas de paramètre
 afficherjourssemaines();  // Appel de la fonction pour afficher les jours
 // Pour test dans terminal VSCode, taper:
 //" ...\www\runtrack3\jour01\job05> node script.js"
+
+const joursemaines = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'];
+
+    function afficherJoursSemaines() {
+        for (const element of joursemaines) {
+            console.log(element);
+        }
+    }
+    afficherJoursSemaines();

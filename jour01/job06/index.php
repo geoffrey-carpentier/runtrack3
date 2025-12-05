@@ -11,11 +11,12 @@
 <body>
     <h1>Le fameux(?) "FizzBuzz" en JS</h1>
 
-    <p>" Créez une fonction fizzbuzz qui ne prend pas de paramètre. Dans cette fonction,
+    <p style="text-align: justify;" "fontsize : 16px;"> 
+    TODO: "Créez une fonction fizzbuzz qui ne prend pas de paramètre. Dans cette fonction,
 affichez dans la console web les nombres de 1 à 151. Remplacez certains nombres par
-un mot selon les conditions suivantes :
-● Si le nombre est un multiple de 3, affichez “Fizz”.
-● Si le nombre est un multiple de 5, affichez “Buzz”.
+un mot selon les conditions suivantes :<br>
+● Si le nombre est un multiple de 3, affichez “Fizz”.<br>
+● Si le nombre est un multiple de 5, affichez “Buzz”.<br>
 ● Si le nombre est un multiple de 3 et de 5, affichez “FizzBuzz”"</p>
     <!-- . . .  - - -  . . .  -->
 </body>
