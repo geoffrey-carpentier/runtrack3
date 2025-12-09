@@ -5,7 +5,7 @@ body {
   margin: 0;
   padding: 20px;
   line-height: 1.6;
-  min-height: 4096px; /* Taille minimale du body comme demandé pour Job 05 */
+  min-height: 4096px; /* Taille minimale du body définie à 4096px */
 }
 
 header {
@@ -55,11 +55,11 @@ a:hover {
 }
 
 footer {
-  position: fixed;
+  position: fixed; /* Position 'fixed' au bas de la page */
   bottom: 0;
   left: 0;
-  width: 100%;
-  height: 10px;
-  background-color: #6200ea; /* Couleur initiale, évoluera avec le scroll pour Job 05 */
-  transition: background-color 0.3s;
+  width: 100%; /* Largeur complète */
+  height: 100px;
+  background-color: #6200ea; /* Couleur initiale, évolue avec le scroll (js) */
+  transition: background-color 0.1s;
 }

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <article id="citation">La vie a beaucoup plus d’imagination que nous</article>
-    <button id="button">Cliquez pour afficher la citation</button>
+   <!-- Contenu vide pour permettre le scroll -->
+      <footer id="footer"></footer>
 </body>
 </html>

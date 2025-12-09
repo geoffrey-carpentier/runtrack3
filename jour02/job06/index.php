@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <article></article>
-    <button id="button">Un Bouton</button>
+ <!-- Pas de contenu visible par défaut -->
 </body>
 </html>

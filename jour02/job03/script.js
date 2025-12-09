@@ -5,3 +5,15 @@ function addOne() {
 }
 
 document.getElementById("button").addEventListener("click", addOne);
+
+/* const button = document.getElementById("button"); // selecteur
+
+if (button) {
+
+function addOne() {
+    const compteur = document.getElementById("compteur");
+
+        if (compteur) {
+       compteur.textContent(compteur.textContent++);
+    }
+       button.addEventListener("click", addOne); // ecouteur d'evenements
