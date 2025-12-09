@@ -1,9 +1,9 @@
 $(document).ready(function () {
     $('#show').click(function () {
-        $('#text').show();
+        $('#text').addClass('show');
     });
 
     $('#hide').click(function () {
-        $('#text').hide();
+        $('#text').removeClass('show');
     });
 });
