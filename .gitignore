@@ -3,8 +3,14 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
-# Random help files
-*/help.md
+# Help folder
+Help/
+
+# Various files
+*.jpeg
+*.png
+*.pdf
+*.md
 
 # User-specific files
 *.rsuser
@@ -13,6 +19,10 @@
 *.userosscache
 *.sln.docstates
 *.env
+
+
+
+
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
