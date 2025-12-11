@@ -1,0 +1,139 @@
+/* 
+   FICHIER CSS COMMUN POUR TOUS LES JOBS DU JOUR 04
+   -> Ce fichier gère l'ensemble du style pour le jour 04
+*/
+
+/* ============================================================================
+   Reset global : supprime les marges et padding par défaut des navigateurs
+   ============================================================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ============================================================================
+   Styles du corps de la page
+   ============================================================================ */
+body {
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* ============================================================================
+   En-tête de la page avec dégradé bleu
+   ============================================================================ */
+.header {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2c5aa0 100%);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* ============================================================================
+   Conteneur principal : largeur maximale avec marges auto pour centrer
+   ============================================================================ */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* ============================================================================
+   Titres de section (Job 00, Job 01, etc.)
+   ============================================================================ */
+h2 {
+    color: #ff6b35;
+    font-size: 2rem;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ff6b35;
+    padding-bottom: 8px;
+}
+
+/* Style des liens dans les titres h2 */
+h2 a {
+    color: #ff6b35;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+h2 a:hover {
+    color: #ff8c55;
+}
+
+/* ============================================================================
+   Sous-titres (Par exemple :)
+   ============================================================================ */
+h3 {
+    color: #ff6b35;
+    font-size: 1.3rem;
+    margin-top: 20px;
+}
+
+/* ============================================================================
+   Paragraphes et listes
+   ============================================================================ */
+p, li {
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+ul {
+    margin-left: 30px;
+}
+
+/* ============================================================================
+   Liens hypertextes
+   ============================================================================ */
+a {
+    color: #0066cc;
+    text-decoration: none;
+    transition: text-decoration 0.2s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================================================
+   Balises code (inline)
+   ============================================================================ */
+code {
+    background: #f4f4f4;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+}
+
+/* ============================================================================
+   Classe .code-block : bloc de code affiché sur une ligne séparée
+   (par exemple pour les exemples JSON)
+   ============================================================================ */
+code.code-block {
+    display: block;
+    background: #f4f4f4;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 10px 0;
+    overflow-x: auto;
+}
+
+/* ============================================================================
+   Classe highlight : met en orange et gras le texte important
+   ============================================================================ */
+.highlight {
+    color: #ff6b35;
+    font-weight: bold;
+}

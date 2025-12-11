@@ -3,13 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jour 4 - Job 01</title>
+    <title>Jour 4 - Job 01 : Fetch un fichier texte</title>
+        <link rel="stylesheet" href="../job00/style.css">
+
 </head>
 <body>
-    <h1>Jour 4 : Fetch - Job 01</h1>
-    <!-- corps du document -->
+    <h1>Job 01 - Fetch Expression</h1>
 
-    <!-- inclusion du script JS -->
-    <script src="./script.js"></script> 
+    <!-- Bouton pour déclencher la récupération du fichier expression.txt via Fetch -->
+    <button id="button">Charger mon expression favorite</button>
+
+    <!-- Paragraphe pour recevoir le contenu du fichier expression.txt -->
+    <p id="result"></p>
+
+    <!-- Inclusion du script JavaScript (logique Fetch) -->
+    <script src="./script.js"></script>
 </body>
 </html>

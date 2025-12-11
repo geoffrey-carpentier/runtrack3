@@ -5,88 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jour 04 - Fetch</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #1e3a5f 0%, #2c5aa0 100%);
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        .header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        h2 {
-            color: #ff6b35;
-            font-size: 2rem;
-            margin-top: 40px;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #ff6b35;
-            padding-bottom: 8px;
-        }
-
-        h3 {
-            color: #ff6b35;
-            font-size: 1.3rem;
-            margin-top: 20px;
-        }
-
-        p,
-        li {
-            margin-bottom: 15px;
-            font-size: 1rem;
-        }
-
-        ul {
-            margin-left: 30px;
-        }
-
-        a {
-            color: #0066cc;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        code {
-            background: #f4f4f4;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-family: 'Courier New';
-        }
-
-        .highlight {
-            color: #ff6b35;
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
@@ -96,7 +15,6 @@
     </div>
 
     <div class="container">
-        <!-- Job 00 -->
         <h2>Job 00</h2>
         <p>
             Dans le répertoire de rendu <span class="highlight">"runtrack3"</span>, créez un dossier <span class="highlight">"jour04"</span>.
@@ -114,8 +32,7 @@
             <span class="highlight">l'asynchrone et plus précisément AJAX Fetch.</span>
         </p>
 
-        <!-- Job 01 -->
-        <h2>Job 01</h2>
+        <h2><a href="../job01/">Job 01</a></h2>
         <p>
             Créez un <code>&lt;button&gt;</code> ayant comme <span class="highlight">id "button"</span>.
             Créez un fichier <span class="highlight">expression.txt</span> contenant votre expression favorite.
@@ -125,21 +42,19 @@
             placez le dans un paragraphe <code>&lt;p&gt;</code> et insérez le dans le <span class="highlight">corps de votre page</span>.
         </p>
 
-        <!-- Job 02 -->
-        <h2>Job 02</h2>
+        <h2><a href="../job02/">Job 02</a></h2>
         <p>
             Créez une fonction JavaScript <span class="highlight">"jsonValueKey()"</span> qui prend en paramètre une chaîne de caractères au format <span class="highlight">JSON</span> et une <span class="highlight">clé</span>.
             Cette fonction <span class="highlight">retourne</span> la valeur liée à cette clé dans la chaîne de caractères.
         </p>
         <h3>Par exemple :</h3>
         <p>si la string passée en paramètre est :</p>
-        <code style="display: block; background: #f4f4f4; padding: 15px; border-radius: 5px; margin: 10px 0; overflow-x: auto;">
+        <code class="code-block">
             { name: "La Plateforme_", address: "8 rue d'hozier", city: "Marseille", nb_staff: "11", creation:"2019" }
         </code>
         <p>et la clé est <span class="highlight">"city"</span>, la fonction retourne <span class="highlight">"Marseille"</span>.</p>
 
-        <!-- Job 03 -->
-        <h2>Job 03</h2>
+        <h2><a href="../job03/">Job 03</a></h2>
         <p>
             Téléchargez le fichier suivant :
             <a href="https://drive.google.com/file/d/1hiOzUjgzH9iurgYPpiZ-3gyMAzLiy7W_/view" target="_blank"><span class="highlight">pokemon.json</span></a>
@@ -157,8 +72,7 @@
             en les affichant sur une page HTML.
         </p>
 
-        <!-- Job 04 -->
-        <h2>Job 04</h2>
+        <h2><a href="../job04/">Job 04</a></h2>
         <p>
             Créez une <span class="highlight">base de données "utilisateurs"</span> contenant une table <span class="highlight">"utilisateurs"</span>
             et ayant comme <span class="highlight">champs "id", "nom", "prenom" et "email"</span>.
@@ -177,14 +91,12 @@
             Vous pouvez <span class="highlight">tester votre code</span> en ajoutant/supprimant des utilisateurs à l'aide de <span class="highlight">phpmyadmin</span> entre deux clics.
         </p>
 
-        <!-- Compétences visées -->
         <h2>Compétences visées</h2>
         <ul>
             <li>Utiliser la méthode fetch pour communiquer avec la base de donnée</li>
             <li>Comprendre et manipuler un JSON</li>
         </ul>
 
-        <!-- Base de connaissances -->
         <h2>Base de connaissances</h2>
         <ul>
             <li><a href="https://fr.wikipedia.org/wiki/JavaScript_Object_Notation" target="_blank">JavaScript Object Notation — Wikipédia</a></li>
@@ -195,10 +107,9 @@
             <li><a href="https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch" target="_blank">Utiliser Fetch - Référence Web API | MDN</a></li>
         </ul>
 
-        <!-- Rendu -->
         <h2>Rendu</h2>
         <p>
-            Le projet est à rendre sur <a href="https://github.com/prenom-nom/runtrack3" target="_blank">https://github.com/prenom-nom/runtrack3</a>.
+            Le projet est à rendre sur <a href="https://github.com/geoffrey-carpentier/runtrack3" target="_blank">https://github.com/prenom-nom/runtrack3</a>.
             <br>
             Dossiers "jourXX" → "jobXX".
             <br>
