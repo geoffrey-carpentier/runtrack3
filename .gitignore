@@ -9,7 +9,7 @@ Help/
 # Various files
 *.jpeg
 *.png
-*.pdf
+#*.pdf
 *.md
 
 # User-specific files
