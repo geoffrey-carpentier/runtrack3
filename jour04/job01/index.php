@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jour 4 - Job 01 : Fetch un fichier texte</title>
+    <title>Jour 4 - Job 01 : Fetch un .txt</title>
         <link rel="stylesheet" href="../job00/style.css">
 
 </head>
