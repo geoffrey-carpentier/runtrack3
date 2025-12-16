@@ -27,7 +27,7 @@
 
         <!-- Job 01 -->
         <h2><a href="../job01/">Job 01</a></h2>
-        <p>Commencez par créer deux fichiers HTML <span class="highlight">"connexion.html"</span> et <span class="highlight">"inscription.html"</span> contenant un formulaire.</p>
+        <p>Commencez par créer deux fichiers HTML <a href="" class="highlight">"connexion.html"</span> et <span class="highlight">"inscription.html"</span> contenant un formulaire.</p>
 
         <h3>Le formulaire de la page de connexion doit contenir les champs suivants :</h3>
         <ul>
