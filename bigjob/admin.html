@@ -10,15 +10,59 @@
     <link rel="stylesheet" href="assets/styles/main.css" /> -->
   </head>
   <body class="bg-gray-100 min-h-screen flex flex-col">
-    <header class="bg-blue-700 text-white p-4">
+    <header
+      class="bg-blue-700 text-white p-4 flex items-center justify-between"
+    >
       <h1 class="text-2xl font-bold">La Plateforme_</h1>
+      <nav>
+        <ul class="flex gap-4">
+          <li><a href="index.html" class="hover:underline">Accueil</a></li>
+          <li>
+            <a href="calendrier.html" class="hover:underline">Calendrier</a>
+          </li>
+          <li>
+            <a href="backoffice.html" class="hover:underline">Backoffice</a>
+          </li>
+          <li><a href="admin.html" class="hover:underline">Admin</a></li>
+          <li>
+            <a href="connexion.html" class="hover:underline">Connexion</a>
+          </li>
+          <li>
+            <a href="inscription.html" class="hover:underline">Inscription</a>
+          </li>
+        </ul>
+      </nav>
     </header>
     <main class="flex-1 p-8">
-      <h1>Espace admin en construction...</h1>
-      <p>
-        Espace administrateur, gestion des droits (ajout/suppression de
-        modérateurs/admins): à venir...
-      </p>
+      <h2 class="text-2xl font-bold mb-6">Gestion des droits utilisateurs</h2>
+      <div class="bg-white rounded shadow p-6">
+        <table class="w-full text-left">
+          <thead>
+            <tr>
+              <th class="py-2">Nom</th>
+              <th class="py-2">Email</th>
+              <th class="py-2">Rôle</th>
+              <th class="py-2">Action</th>
+            </tr>
+          </thead>
+          <tbody id="usersTable">
+            <!-- À remplir dynamiquement avec JS -->
+            <tr>
+              <td>Marie Martin</td>
+              <td>marie.martin@laplateforme.io</td>
+              <td>Modérateur</td>
+              <td>
+                <button class="bg-yellow-500 text-white px-3 py-1 rounded mr-2">
+                  Promouvoir admin
+                </button>
+                <button class="bg-red-500 text-white px-3 py-1 rounded">
+                  Supprimer
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </main>
     <footer class="bg-gray-800 text-white text-center p-4">
       &copy; 2026 La Plateforme_

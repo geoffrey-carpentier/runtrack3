@@ -10,15 +10,53 @@
     <link rel="stylesheet" href="assets/styles/main.css">  -->
   </head>
   <body class="bg-gray-100 min-h-screen flex flex-col">
-    <header class="bg-blue-700 text-white p-4">
+    <header
+      class="bg-blue-700 text-white p-4 flex items-center justify-between"
+    >
       <h1 class="text-2xl font-bold">La Plateforme_</h1>
+      <nav>
+        <ul class="flex gap-4">
+          <li><a href="index.html" class="hover:underline">Accueil</a></li>
+          <li>
+            <a href="calendrier.html" class="hover:underline">Calendrier</a>
+          </li>
+          <li>
+            <a href="backoffice.html" class="hover:underline">Backoffice</a>
+          </li>
+          <li><a href="admin.html" class="hover:underline">Admin</a></li>
+          <li>
+            <a href="connexion.html" class="hover:underline">Connexion</a>
+          </li>
+          <li>
+            <a href="inscription.html" class="hover:underline">Inscription</a>
+          </li>
+        </ul>
+      </nav>
     </header>
     <main class="flex-1 p-8">
-      <h1>Page calendrier en construction...</h1>
-        <p>
-        Espace utilisateur connecté, affichage du calendrier, demande de
-        présence: à venir...
+      <h2 class="text-2xl font-bold mb-6">Mon calendrier de présence</h2>
+      <div class="bg-white rounded shadow p-6 mb-6">
+        <!-- Ici, tu pourras afficher dynamiquement le calendrier avec JS -->
+        <p class="mb-4">
+          Sélectionnez les jours où vous souhaitez être présent à La Plateforme_
+          :
         </p>
+        <div id="calendar" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <!-- Exemples de jours, à générer dynamiquement -->
+          <button class="bg-gray-200 px-4 py-2 rounded hover:bg-blue-200">
+            15/01/2026
+          </button>
+          <button class="bg-gray-200 px-4 py-2 rounded hover:bg-blue-200">
+            16/01/2026
+          </button>
+          <!-- ... -->
+        </div>
+        <button
+          class="mt-6 bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-800"
+        >
+          Valider mes présences
+        </button>
+      </div>
     </main>
     <footer class="bg-gray-800 text-white text-center p-4">
       &copy; 2026 La Plateforme_
