@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "email": "admin@laplateforme.io",
+    "nom": "Admin",
+    "prenom": "Admin",
+    "age": 50,
+    "password": "hash123",
+    "role": "admin"
+  },
+  {
+    "id": 2,
+    "email": "alice@laplateforme.io",
+    "nom": "Dupont",
+    "prenom": "Alice",
+    "age": 25,
+    "password": "hash123",
+    "role": "user"
+  },
+  {
+    "id": 3,
+    "email": "bob@laplateforme.io",
+    "nom": "Martin",
+    "prenom": "Bob",
+    "age": 30,
+    "password": "hash123",
+    "role": "user"
+  },
+  {
+    "id": 4,
+    "email": "charlie@laplateforme.io",
+    "nom": "Durand",
+    "prenom": "Charlie",
+    "age": 28,
+    "password": "hash123",
+    "role": "user"
+  },
+  {
+    "id": 5,
+    "email": "diana@laplateforme.io",
+    "nom": "Lefebvre",
+    "prenom": "Diana",
+    "age": 26,
+    "password": "hash123",
+    "role": "user"
+  },
+  {
+    "id": 6,
+    "email": "ethan@laplateforme.io",
+    "nom": "Rousseau",
+    "prenom": "Ethan",
+    "age": 32,
+    "password": "hash123",
+    "role": "user"
+  },
+  {
+    "id": 7,
+    "email": "john@laplateforme.io",
+    "nom": "Doe",
+    "prenom": "John",
+    "age": 93,
+    "password": "hash123",
+    "role": "user"
+  }
+]
