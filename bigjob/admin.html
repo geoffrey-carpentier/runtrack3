@@ -10,9 +10,8 @@
     <link rel="stylesheet" href="assets/styles/main.css" /> -->
   </head>
   <body class="bg-gray-100 min-h-screen flex flex-col">
-    <header
-      class="bg-blue-700 text-white p-4 flex items-center justify-between"
-    >
+    <!-- Header commun -->
+    <header class="bg-blue-700 text-white p-4 flex items-center justify-between">
       <h1 class="text-2xl font-bold">La Plateforme_</h1>
       <nav>
         <ul id="main-nav" class="flex gap-4">
@@ -20,8 +19,9 @@
         </ul>
       </nav>
     </header>
+    <!-- Section principale : gestion des droits et des demandes -->
     <main class="flex-1 p-8">
-      <!-- Gestion des droits (admin uniquement) -->
+      <!-- Panneau admin : gestion des droits utilisateurs (affiché uniquement pour les admins) -->
       <div id="admin-panel" style="display: none">
         <h3 class="text-xl font-bold mb-4">Gestion des droits utilisateurs</h3>
         <table class="w-full text-left">
@@ -36,8 +36,7 @@
           <tbody id="usersTable"></tbody>
         </table>
       </div>
-
-      <!-- Gestion des demandes de présence (moderator/admin) -->
+      <!-- Panneau modération : gestion des demandes de présence (affiché pour admin et modérateur) -->
       <div>
         <h3 class="text-xl font-bold mb-4">Demandes de présence en attente</h3>
         <table class="w-full text-left">
@@ -53,9 +52,11 @@
         </table>
       </div>
     </main>
+    <!-- Footer commun -->
     <footer class="bg-gray-800 text-white text-center p-4">
       &copy; 2026 La Plateforme_
     </footer>
+    <!-- Script de navigation dynamique -->
     <script src="assets/js/nav.js"></script>
   </body>
 </html>

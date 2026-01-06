@@ -61,5 +61,95 @@
     "age": 93,
     "password": "hash123",
     "role": "user"
+  },
+  {
+    "id": 8,
+    "email": "mod1@laplateforme.io",
+    "nom": "Modérateur",
+    "prenom": "Paul",
+    "age": 40,
+    "password": "hash123",
+    "role": "moderator"
+  },
+  {
+    "id": 9,
+    "email": "mod2@laplateforme.io",
+    "nom": "Modératrice",
+    "prenom": "Sophie",
+    "age": 35,
+    "password": "hash123",
+    "role": "moderator"
+  },
+  {
+    "id": 10,
+    "email": "test1@gmail.com",
+    "nom": "Testeur",
+    "prenom": "Lucas",
+    "age": 22,
+    "password": "hash123",
+    "role": "user"
+  },
+  {
+    "id": 11,
+    "email": "test2@laplateforme.io",
+    "nom": "Test",
+    "prenom": "Emma",
+    "age": 21,
+    "password": "hash123",
+    "role": "user"
+  },
+  {
+    "id": 12,
+    "email": "test3@laplateforme.io",
+    "nom": "Test",
+    "prenom": "Noah",
+    "age": 24,
+    "password": "hash123",
+    "role": "user"
+  },
+  {
+    "id": 13,
+    "email": "invalid.email@autre.com",
+    "nom": "Invalide",
+    "prenom": "Julie",
+    "age": 27,
+    "password": "hash123",
+    "role": "user"
+  },
+  {
+    "id": 14,
+    "email": "admin2@laplateforme.io",
+    "nom": "SuperAdmin",
+    "prenom": "Maxime",
+    "age": 45,
+    "password": "hash123",
+    "role": "admin"
+  },
+  {
+    "id": 15,
+    "email": "mod3@laplateforme.io",
+    "nom": "Modérateur",
+    "prenom": "Clara",
+    "age": 38,
+    "password": "hash123",
+    "role": "moderator"
+  },
+  {
+    "id": 16,
+    "email": "user1@laplateforme.io",
+    "nom": "Utilisateur",
+    "prenom": "Hugo",
+    "age": 20,
+    "password": "hash123",
+    "role": "user"
+  },
+  {
+    "id": 17,
+    "email": "user2@laplateforme.io",
+    "nom": "Utilisateur",
+    "prenom": "Lina",
+    "age": 23,
+    "password": "hash123",
+    "role": "user"
   }
 ]

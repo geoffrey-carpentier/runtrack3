@@ -6,26 +6,58 @@
     <title>Inscription</title>
     <!-- Intégration Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Ton CSS personnalisé (optionnel) -->
+    <!-- CSS personnalisé (optionnel) -->
     <link rel="stylesheet" href="assets/styles/main.css" />
   </head>
   <body class="bg-gray-100 min-h-screen flex flex-col">
-    <header
-      class="bg-blue-700 text-white p-4 flex items-center justify-between"
-    >
+    <!-- Header commun -->
+    <header class="bg-blue-700 text-white p-4 flex items-center justify-between">
       <h1 class="text-2xl font-bold">La Plateforme_</h1>
       <nav>
         <ul id="main-nav" class="flex gap-4">
-          <!-- Les liens seront injectés ici par JS -->
+          <!-- Liens injectés par JS selon le rôle -->
         </ul>
       </nav>
     </header>
+    <!-- Section principale : formulaire d'inscription -->
     <main class="flex-1 p-8 flex flex-col items-center">
       <h2 class="text-2xl font-bold mb-6">Inscription</h2>
-      <form
-        id="registerForm"
-        class="bg-white p-6 rounded shadow-md w-full max-w-md space-y-4"
-      >
+      <!-- Formulaire d'inscription avec validation JS -->
+      <form id="registerForm" class="bg-white p-6 rounded shadow-md w-full max-w-md space-y-4">
+        <!-- Champ prénom -->
+        <div>
+          <label for="prenom" class="block mb-1 font-semibold">Prénom</label>
+          <input
+            type="text"
+            id="prenom"
+            name="prenom"
+            required
+            class="w-full border rounded px-3 py-2"
+          />
+        </div>
+        <!-- Champ nom -->
+        <div>
+          <label for="nom" class="block mb-1 font-semibold">Nom</label>
+          <input
+            type="text"
+            id="nom"
+            name="nom"
+            required
+            class="w-full border rounded px-3 py-2"
+          />
+        </div>
+        <!-- Champ âge -->
+        <div>
+          <label for="age" class="block mb-1 font-semibold">Âge</label>
+          <input
+            type="number"
+            id="age"
+            name="age"
+            required
+            class="w-full border rounded px-3 py-2"
+          />
+        </div>
+        <!-- Champ email -->
         <div>
           <label for="email" class="block mb-1 font-semibold"
             >Adresse email (La Plateforme_)</label
@@ -38,10 +70,9 @@
             class="w-full border rounded px-3 py-2"
             placeholder="prenom.nom@laplateforme.io"
           />
-          <p id="emailError" class="text-red-500 text-sm mt-1 hidden">
-            L'adresse doit se terminer par @laplateforme.io
-          </p>
+          <p id="emailError" class="text-red-500 text-sm mt-1 hidden"></p>
         </div>
+        <!-- Champ mot de passe -->
         <div>
           <label for="password" class="block mb-1 font-semibold"
             >Mot de passe</label
@@ -54,6 +85,7 @@
             class="w-full border rounded px-3 py-2"
           />
         </div>
+        <!-- Bouton d'envoi -->
         <button
           type="submit"
           class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-800"
@@ -62,9 +94,11 @@
         </button>
       </form>
     </main>
+    <!-- Footer commun -->
     <footer class="bg-gray-800 text-white text-center p-4">
       &copy; 2026 La Plateforme_
     </footer>
+    <!-- Scripts JS pour la navigation et la gestion du formulaire -->
     <script src="assets/js/nav.js"></script>
     <script src="assets/js/register.js"></script>
   </body>

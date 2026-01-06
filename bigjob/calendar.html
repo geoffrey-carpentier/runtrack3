@@ -1,3 +1,8 @@
+<!-- Page calendrier:
+- Permet à l'utilisateur de demander une présence pour une date donnée
+- Affiche la liste des demandes de l'utilisateur
+- Utilisation de Tailwind CSS pour le design  -->
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -10,22 +15,20 @@
     <link rel="stylesheet" href="assets/styles/main.css">  -->
   </head>
   <body class="bg-gray-100 min-h-screen flex flex-col">
-    <header
-      class="bg-blue-700 text-white p-4 flex items-center justify-between"
-    >
+    <!-- Header commun -->
+    <header class="bg-blue-700 text-white p-4 flex items-center justify-between">
       <h1 class="text-2xl font-bold">La Plateforme_</h1>
       <nav>
         <ul id="main-nav" class="flex gap-4">
-          <!-- Les liens seront injectés ici par JS -->
+          <!-- Liens injectés par JS selon le rôle -->
         </ul>
       </nav>
     </header>
+    <!-- Section principale : formulaire de demande de présence et liste des demandes -->
     <main class="flex-1 p-8 flex flex-col items-center">
       <h2 class="text-2xl font-bold mb-6">Mon calendrier de présence</h2>
-      <form
-        id="presenceForm"
-        class="bg-white p-6 rounded shadow-md w-full max-w-md space-y-4"
-      >
+      <!-- Formulaire de demande de présence -->
+      <form id="presenceForm" class="bg-white p-6 rounded shadow-md w-full max-w-md space-y-4">
         <div>
           <label for="date" class="block mb-1 font-semibold"
             >Sélectionnez une date :</label
@@ -39,21 +42,19 @@
           />
           <p id="dateError" class="text-red-500 text-sm mt-1 hidden"></p>
         </div>
-        <button
-          type="submit"
-          class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-800"
-        >
-          Demander une présence
-        </button>
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-800">Demander une présence</button>
       </form>
+      <!-- Liste des demandes de présence de l'utilisateur -->
       <div class="mt-8 w-full max-w-md">
         <h3 class="text-lg font-bold mb-2">Mes demandes</h3>
         <ul id="requestsList" class="space-y-2"></ul>
       </div>
     </main>
+    <!-- Footer commun -->
     <footer class="bg-gray-800 text-white text-center p-4">
       &copy; 2026 La Plateforme_
     </footer>
+    <!-- Scripts JS pour la navigation et la gestion du calendrier -->
     <script src="assets/js/nav.js"></script>
     <script src="assets/js/calendar.js"></script>
   </body>
