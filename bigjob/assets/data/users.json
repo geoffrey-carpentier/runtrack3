@@ -5,7 +5,7 @@
     "nom": "Admin",
     "prenom": "Admin",
     "age": 50,
-    "password": "hash123",
+    "password": "password",
     "role": "admin"
   },
   {
@@ -151,5 +151,23 @@
     "age": 23,
     "password": "hash123",
     "role": "user"
+  },
+    {
+    "id": 18,
+    "email": "prenom.nom@laplateforme.io",
+    "nom": "Nom",
+    "prenom": "Prénom",
+    "age": 50,
+    "password": "password",
+    "role": "user"
+  },
+    {
+    "id": 1,
+    "email": "modo@laplateforme.io",
+    "nom": "Modo",
+    "prenom": "Modo",
+    "age": 8,
+    "password": "password",
+    "role": "moderator"
   }
 ]

@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Vérifie que FullCalendar est bien chargé
+    if (typeof FullCalendar === "undefined") {
+        alert("Erreur : FullCalendar n'est pas chargé !");
+        return;
+    }
+
     // Récupère l'utilisateur connecté
     const user = JSON.parse(localStorage.getItem("currentUser"));
     if (!user) {
@@ -72,7 +78,40 @@ document.addEventListener('DOMContentLoaded', function () {
             center: 'title',
             right: ''
         },
-        locale: 'fr'
+        locale: 'fr',
+        eventClick: function(info) {
+            // Récupère la demande liée à l'événement cliqué
+            const requests = JSON.parse(localStorage.getItem("requests")) || [];
+            const request = requests.find(r => r.id == info.event.id);
+
+            // Vérifie si la demande est annulable
+            const today = new Date().toISOString().split('T')[0];
+            if (request && request.status === "pending" && request.date >= today) {
+                if (confirm("Voulez-vous annuler cette demande de présence ?")) {
+                    // Supprime la demande
+                    const newRequests = requests.filter(r => r.id != info.event.id);
+                    localStorage.setItem("requests", JSON.stringify(newRequests));
+                    // Rafraîchit le calendrier
+                    info.event.remove();
+                    alert("Demande annulée !");
+                }
+            } else {
+                // Affiche les détails si non annulable
+                alert(
+                    `Date : ${request.date}\nStatut : ${request.status === "approved" ? "Validée" : request.status === "pending" ? "En attente" : "Refusée"}`
+                );
+            }
+        },
     });
     calendar.render();
+
+    // Légende sous le calendrier
+    const legend = document.createElement('div');
+    legend.className = "flex gap-4 mt-4";
+    legend.innerHTML = `
+        <span class="flex items-center"><span class="w-4 h-4 bg-green-500 inline-block mr-2 rounded"></span>Validée</span>
+        <span class="flex items-center"><span class="w-4 h-4 bg-yellow-400 inline-block mr-2 rounded"></span>En attente</span>
+        <span class="flex items-center"><span class="w-4 h-4 bg-red-500 inline-block mr-2 rounded"></span>Refusée</span>
+    `;
+    calendarEl.parentNode.appendChild(legend);
 });
