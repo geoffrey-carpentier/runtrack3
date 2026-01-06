@@ -24,9 +24,6 @@ function renderNav() {
       <li><a href="calendar.html" class="hover:underline">Calendrier</a></li>
     `;
         if (user.role === 'moderator' || user.role === 'admin') {
-            links += `<li><a href="admin.html" class="hover:underline">Backoffice</a></li>`;
-        }
-        if (user.role === 'admin') {
             links += `<li><a href="admin.html" class="hover:underline">Admin</a></li>`;
         }
         links += `<li><a href="#" id="logout-link" class="hover:underline text-red-400">Déconnexion</a></li>`;
