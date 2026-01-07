@@ -1,13 +1,15 @@
+<!--   Page de connexion utilisateur
+- Formulaire de connexion avec validation JS (login.js)
+- Affichage des erreurs en cas de problème de saisie
+- Tailwind CSS pour le design      -->
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Connexion</title>
     <!-- Intégration Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- CSS personnalisé ici
-    <link rel="stylesheet" href="assets/styles/main.css"> -->
   </head>
   <body class="bg-gray-100 min-h-screen flex flex-col">
     <!-- Header commun -->
@@ -15,7 +17,7 @@
       <h1 class="text-2xl font-bold">La Plateforme_</h1>
       <nav>
         <ul id="main-nav" class="flex gap-4">
-          <!-- Liens injectés par JS selon le rôle -->
+          <!-- Liens injectés par JS selon les privilèges utilisateur -->
         </ul>
       </nav>
     </header>
@@ -63,8 +65,8 @@
     <footer class="bg-gray-800 text-white text-center p-4">
       &copy; 2026 La Plateforme_
     </footer>
-    <!-- Scripts JS pour la navigation et la gestion du formulaire -->
-    <script src="assets/js/login.js"></script>
+    <!-- Scripts JS -->
     <script src="assets/js/nav.js"></script>
+    <script src="assets/js/login.js"></script>
   </body>
 </html>

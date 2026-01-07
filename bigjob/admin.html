@@ -1,62 +1,70 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Administration</title>
-    <!-- Intégration Tailwind CSS via CDN -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Backoffice — La Plateforme_</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- CSS personnalisé à venir ici
-    <link rel="stylesheet" href="assets/styles/main.css" /> -->
   </head>
   <body class="bg-gray-100 min-h-screen flex flex-col">
-    <!-- Header commun -->
-    <header class="bg-blue-700 text-white p-4 flex items-center justify-between">
-      <h1 class="text-2xl font-bold">La Plateforme_</h1>
-      <nav>
-        <ul id="main-nav" class="flex gap-4">
-          <!-- Les liens sont injectés ici par JS (depuis assets/js/nav.js) -->
-        </ul>
-      </nav>
-    </header>
-    <!-- Section principale : gestion des droits et des demandes -->
-    <main class="flex-1 p-8">
-      <!-- Panneau admin : gestion des droits utilisateurs (affiché uniquement pour les admins) -->
-      <div id="admin-panel" style="display: none">
-        <h3 class="text-xl font-bold mb-4">Gestion des droits utilisateurs</h3>
-        <table class="w-full text-left">
-          <thead>
-            <tr>
-              <th>Nom</th>
-              <th>Email</th>
-              <th>Rôle</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody id="usersTable"></tbody>
-        </table>
+    <header class="bg-blue-700 text-white p-4">
+      <div class="max-w-6xl mx-auto flex items-center justify-between">
+        <h1 class="text-2xl font-bold">Backoffice</h1>
+        <nav><ul id="main-nav" class="flex gap-4"></ul></nav>
       </div>
-      <!-- Panneau modération : gestion des demandes de présence (affiché pour admin et modérateur) -->
-      <div>
-        <h3 class="text-xl font-bold mb-4">Demandes de présence en attente</h3>
-        <table class="w-full text-left">
-          <thead>
-            <tr>
-              <th>Nom</th>
-              <th>Date</th>
-              <th>Statut</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody id="requestsTable"></tbody>
-        </table>
+    </header>
+
+    <main class="flex-1 p-6">
+      <div class="max-w-6xl mx-auto space-y-8">
+        <section class="bg-white shadow rounded p-4">
+          <h2 class="text-xl font-semibold mb-4">Demandes en attente</h2>
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-sm">
+              <thead>
+                <tr class="bg-gray-100">
+                  <th class="px-3 py-2 text-left">Utilisateur</th>
+                  <th class="px-3 py-2 text-left">Date</th>
+                  <th class="px-3 py-2 text-left">Statut</th>
+                  <th class="px-3 py-2 text-left">Actions</th>
+                </tr>
+              </thead>
+              <tbody
+                id="requestsTable"
+                class="divide-y divide-gray-200"
+              ></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section
+          id="admin-users-section"
+          class="bg-white shadow rounded p-4 hidden"
+        >
+          <h2 class="text-xl font-semibold mb-4">
+            Gestion des utilisateurs (admin)
+          </h2>
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-sm">
+              <thead>
+                <tr class="bg-gray-100">
+                  <th class="px-3 py-2 text-left">Nom</th>
+                  <th class="px-3 py-2 text-left">Email</th>
+                  <th class="px-3 py-2 text-left">Rôle</th>
+                  <th class="px-3 py-2 text-left">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="usersTable" class="divide-y divide-gray-200"></tbody>
+            </table>
+          </div>
+        </section>
       </div>
     </main>
-    <!-- Footer commun -->
+
     <footer class="bg-gray-800 text-white text-center p-4">
       &copy; 2026 La Plateforme_
     </footer>
-    <!-- Script de navigation dynamique -->
+
     <script src="assets/js/nav.js"></script>
+    <script src="assets/js/admin.js"></script>
   </body>
 </html>

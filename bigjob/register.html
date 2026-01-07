@@ -1,21 +1,27 @@
+<!--        Page d'inscription pour les nouveaux utilisateurs
+- Formulaire complet avec validation JS (register.js)
+- Affichage des erreurs en cas de problème de saisie
+- Tailwind CSS pour le design     -->
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Inscription</title>
     <!-- Intégration Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- CSS personnalisé (optionnel) -->
-    <link rel="stylesheet" href="assets/styles/main.css" />
+    <!-- CSS personnalisé (optionnel) 
+    <link rel="stylesheet" href="assets/styles/main.css" />  -->
   </head>
   <body class="bg-gray-100 min-h-screen flex flex-col">
     <!-- Header commun -->
-    <header class="bg-blue-700 text-white p-4 flex items-center justify-between">
+    <header
+      class="bg-blue-700 text-white p-4 flex items-center justify-between"
+    >
       <h1 class="text-2xl font-bold">La Plateforme_</h1>
       <nav>
         <ul id="main-nav" class="flex gap-4">
-          <!-- Liens injectés par JS selon le rôle -->
+          <!-- Liens injectés par JS selon le rôle de l'utilisateur connecté -->
         </ul>
       </nav>
     </header>
@@ -23,7 +29,10 @@
     <main class="flex-1 p-8 flex flex-col items-center">
       <h2 class="text-2xl font-bold mb-6">Inscription</h2>
       <!-- Formulaire d'inscription avec validation JS -->
-      <form id="registerForm" class="bg-white p-6 rounded shadow-md w-full max-w-md space-y-4">
+      <form
+        id="registerForm"
+        class="bg-white p-6 rounded shadow-md w-full max-w-md space-y-4"
+      >
         <!-- Champ prénom -->
         <div>
           <label for="prenom" class="block mb-1 font-semibold">Prénom</label>
@@ -98,7 +107,7 @@
     <footer class="bg-gray-800 text-white text-center p-4">
       &copy; 2026 La Plateforme_
     </footer>
-    <!-- Scripts JS pour la navigation et la gestion du formulaire -->
+    <!-- Scripts JS -->
     <script src="assets/js/nav.js"></script>
     <script src="assets/js/register.js"></script>
   </body>

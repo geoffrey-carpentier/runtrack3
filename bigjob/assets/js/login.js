@@ -10,6 +10,23 @@ function isLaPlateformeEmail(email) {
   return email.endsWith("@laplateforme.io");
 }
 
+// Initialise users.json en localStorage au démarrage
+async function initializeUsers() {
+  let users = JSON.parse(localStorage.getItem('users') || '[]');
+  if (users.length === 0) {
+    try {
+      const res = await fetch('assets/data/users.json');
+      if (res.ok) {
+        users = await res.json();
+        localStorage.setItem('users', JSON.stringify(users));
+        console.log('Users initialisés depuis JSON');
+      }
+    } catch (e) {
+      console.warn('Impossible de charger users.json, utilisation de valeurs par défaut');
+    }
+  }
+}
+
 // Gestion du formulaire de connexion
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('loginForm');
@@ -67,4 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
       window.location.href = 'calendar.html';
     }
   });
+
+  initializeUsers();
 });

@@ -1,71 +1,51 @@
-<!-- Page calendrier:
+<!--      Page calendrier:
 - Permet à l'utilisateur de demander une présence pour une date donnée
 - Affiche la liste des demandes de l'utilisateur
-- Utilisation de Tailwind CSS pour le design  -->
-
+- Tailwind CSS pour le design      -->
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calendrier</title>
-    <!-- Intégration Tailwind CSS via CDN -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Calendrier — La Plateforme_</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- CSS personnalisé ici
-    <link rel="stylesheet" href="assets/styles/main.css">  -->
-    <!-- Integration de FullCalendar CSS et JS via CDN -->
+
     <!-- FullCalendar CSS -->
     <link
-      href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css"
+      href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.20/index.global.min.css"
       rel="stylesheet"
     />
-    <!-- FullCalendar JS -->
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.20/index.global.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bundle FullCalendar (dist) — ne charge PAS les fichiers core/daygrid/interaction séparés -->
+    <script src="assets/js/index.global.min.js"></script>
   </head>
   <body class="bg-gray-100 min-h-screen flex flex-col">
-    <!-- Header commun -->
-    <header
-      class="bg-blue-700 text-white p-4 flex items-center justify-between"
-    >
-      <h1 class="text-2xl font-bold">La Plateforme_</h1>
-      <nav>
-        <ul id="main-nav" class="flex gap-4">
-          <!-- Liens injectés par JS selon le rôle -->
-        </ul>
-      </nav>
+    <header class="bg-blue-700 text-white p-4">
+      <div class="max-w-6xl mx-auto flex items-center justify-between">
+        <h1 class="text-2xl font-bold">La Plateforme_</h1>
+        <nav><ul id="main-nav" class="flex gap-4"></ul></nav>
+      </div>
     </header>
-    <!-- Section principale : formulaire de demande de présence et liste des demandes -->
-    <main class="flex-1 p-8 flex flex-col items-center">
-      <h2 class="text-2xl font-bold mb-6">Mon calendrier de présence</h2>
-      <div
-        id="calendar"
-        class="w-full max-w-3xl mx-auto my-8 bg-white rounded shadow"
-      ></div>
+
+    <main class="flex-1 p-8">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-center text-2xl font-bold mb-6">
+          Mon calendrier de présence
+        </h2>
+        <div id="calendar" class="bg-white rounded shadow p-4"></div>
+      </div>
     </main>
-    <!-- Footer commun -->
+
     <footer class="bg-gray-800 text-white text-center p-4">
       &copy; 2026 La Plateforme_
     </footer>
-    <!-- Scripts JS pour la navigation et la gestion du calendrier -->
+
+    <!-- App scripts -->
     <script src="assets/js/nav.js"></script>
     <script src="assets/js/calendar.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var calendarEl = document.getElementById("calendar");
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-          plugins: ["dayGrid"],
-          initialView: "dayGridMonth",
-          selectable: true,
-          select: function (info) {
-            // Ici, ajoute la demande de présence dans localStorage
-            // Bloque si la date est passée
-          },
-          events: [
-            // Charge les demandes de présence de l'utilisateur depuis localStorage
-          ],
-        });
-        calendar.render();
-      });
-    </script>
   </body>
 </html>
