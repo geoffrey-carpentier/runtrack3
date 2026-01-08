@@ -16,16 +16,26 @@
 
     <main class="flex-1 p-6">
       <div class="max-w-6xl mx-auto space-y-8">
-        <section class="bg-white shadow rounded p-4">
-          <h2 class="text-xl font-semibold mb-4">Demandes en attente</h2>
+        <section class="bg-white shadow-lg rounded-lg p-6">
+          <h2 class="text-2xl font-bold mb-6 text-gray-800">
+            📋 Modération des demandes
+          </h2>
           <div class="overflow-x-auto">
             <table class="min-w-full text-sm">
-              <thead>
-                <tr class="bg-gray-100">
-                  <th class="px-3 py-2 text-left">Utilisateur</th>
-                  <th class="px-3 py-2 text-left">Date</th>
-                  <th class="px-3 py-2 text-left">Statut</th>
-                  <th class="px-3 py-2 text-left">Actions</th>
+              <thead class="bg-green-100 border-b-2 border-green-300">
+                <tr>
+                  <th class="px-4 py-3 text-left font-bold text-green-900">
+                    Utilisateur
+                  </th>
+                  <th class="px-4 py-3 text-left font-bold text-green-900">
+                    Date
+                  </th>
+                  <th class="px-4 py-3 text-left font-bold text-green-900">
+                    Statut
+                  </th>
+                  <th class="px-4 py-3 text-left font-bold text-green-900">
+                    Actions
+                  </th>
                 </tr>
               </thead>
               <tbody
@@ -36,24 +46,14 @@
           </div>
         </section>
 
-        <section
-          id="admin-users-section"
-          class="bg-white shadow rounded p-4 hidden"
-        >
-          <h2 class="text-xl font-semibold mb-4">
-            Gestion des utilisateurs (admin)
+        <section id="admin-users-section" class="hidden">
+          <h2 class="text-2xl font-bold mb-6 text-indigo-900">
+            👥 Gestion des utilisateurs
           </h2>
           <div class="overflow-x-auto">
             <table class="min-w-full text-sm">
-              <thead>
-                <tr class="bg-gray-100">
-                  <th class="px-3 py-2 text-left">Nom</th>
-                  <th class="px-3 py-2 text-left">Email</th>
-                  <th class="px-3 py-2 text-left">Rôle</th>
-                  <th class="px-3 py-2 text-left">Actions</th>
-                </tr>
-              </thead>
-              <tbody id="usersTable" class="divide-y divide-gray-200"></tbody>
+              <thead></thead>
+              <tbody id="usersTable" class="divide-y divide-indigo-200"></tbody>
             </table>
           </div>
         </section>
