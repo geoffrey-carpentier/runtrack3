@@ -51,9 +51,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const calendarEl = document.getElementById('calendar');
     const calendar = new FullCalendar.Calendar(calendarEl, {
-        // NE PAS passer "plugins" avec le bundle dist
         initialView: 'dayGridMonth',
-        headerToolbar: { left: 'prev,next today', center: 'title', right: '' },
+        headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,dayGridWeek,dayGridDay' // nouvelles vues
+        },
         selectable: true,
         selectMirror: true,
         validRange: { start: new Date().toISOString().split('T')[0] },

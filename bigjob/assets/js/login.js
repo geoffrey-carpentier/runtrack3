@@ -57,12 +57,12 @@ document.addEventListener('DOMContentLoaded', () => {
         users = JSON.parse(stored);
       } else {
         const res = await fetch('assets/data/users.json');
-//*        console.log("Réponse fetch :", res);
+        //*        console.log("Réponse fetch :", res);
         users = await res.json();
-//*        console.log("Utilisateurs chargés :", users);
+        //*        console.log("Utilisateurs chargés :", users);
       }
     } catch (err) {
-//*      console.error("Erreur lors du chargement des utilisateurs :", err);
+      //*      console.error("Erreur lors du chargement des utilisateurs :", err);
       alert("Erreur lors du chargement des utilisateurs.");
       return;
     }
