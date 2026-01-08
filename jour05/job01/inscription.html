@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inscription - Jour 05</title>
+    <link rel="stylesheet" href="../job00/style.css" />
+  </head>
+
+  <body>
+    <div class="header">
+      <h1>Jour 05</h1>
+      <div class="form-tabs">
+        <a href="./inscription.html" class="tab-button active">Inscription</a>
+        <a href="./connexion.html" class="tab-button">Connexion</a>
+      </div>
+    </div>
+
+    <div class="form-container">
+      <!-- Messages d'erreur généraux -->
+      <div class="form-errors" id="formErrors"></div>
+
+      <!-- Formulaire d'inscription -->
+      <form id="inscriptionForm">
+        <div class="form-group two-columns">
+          <div>
+            <label for="firstname">* Prénom</label>
+            <input
+              type="text"
+              id="firstname"
+              name="firstname"
+              placeholder="ee"
+              required
+            />
+            <div class="error-message" id="firstnameError"></div>
+          </div>
+
+          <div>
+            <label for="lastname">* Nom</label>
+            <input
+              type="text"
+              id="lastname"
+              name="lastname"
+              placeholder="re"
+              required
+            />
+            <div class="error-message" id="lastnameError"></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">* Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="john@doe.fr"
+            required
+          />
+          <div class="error-message" id="emailError"></div>
+        </div>
+
+        <div class="form-group two-columns">
+          <div>
+            <label for="password">*Mot de passe</label>
+            <input type="password" id="password" name="password" required />
+            <div class="error-message" id="passwordError"></div>
+          </div>
+
+          <div>
+            <label for="passwordConfirm">* Confirmation du mot de passe</label>
+            <input
+              type="password"
+              id="passwordConfirm"
+              name="passwordConfirm"
+              required
+            />
+            <div class="error-message" id="passwordConfirmError"></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="address">Adresse</label>
+          <textarea id="address" name="address" rows="3" required></textarea>
+          <div class="error-message" id="addressError"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="postalcode">Code postal/ville</label>
+          <input
+            type="text"
+            id="postalcode"
+            name="postalcode"
+            placeholder="13000"
+            required
+          />
+          <div class="error-message" id="postalcodeError"></div>
+        </div>
+
+        <button type="submit" class="submit-btn">Confirmer</button>
+      </form>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!--              Page d'accueil du site:
+- Présente le site et propose les liens vers la connexion et l'inscription.
+- Header et menu navigation générés dynamiquement par le JS (nav.js).
+- Utilisation de Tailwind CSS pour le design responsive.          -->
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Accueil</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 min-h-screen flex flex-col">
+    <!-- Header général -->
+    <header
+      class="bg-blue-700 text-white p-4 flex items-center justify-between"
+    >
+      <h1 class="text-2xl font-bold">La Plateforme_</h1>
+      <!-- Navigation générée dynamiquement selon le rôle utilisateur -->
+      <nav>
+        <ul id="main-nav" class="flex gap-4">
+          <!-- Les liens seront injectés ici par JS selon les privilèges utilisateur -->
+        </ul>
+      </nav>
+    </header>
+    <!-- Section principale : présentation et accès rapide -->
+    <main class="flex-1 p-8 flex flex-col items-center justify-center">
+      <h2 class="text-3xl font-bold mb-4">Bienvenue sur La Plateforme_</h2>
+      <p class="mb-6 text-lg text-center max-w-xl">
+        Gérez vos présences, demandes et droits d'accès à l'école en toute
+        simplicité.
+      </p>
+      <div class="flex gap-4">
+        <!-- Boutons connexion et inscription -->
+        <a
+          href="login.html"
+          class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-800"
+          >Connexion</a
+        >
+        <a
+          href="register.html"
+          class="bg-gray-200 text-blue-700 px-6 py-2 rounded hover:bg-blue-300"
+          >Inscription</a
+        >
+      </div>
+    </main>
+    <!-- Footer commun -->
+    <footer class="bg-gray-800 text-white text-center p-4">
+      &copy; 2026 La Plateforme_
+    </footer>
+    <!-- Scripts  -->
+    <script src="assets/js/nav.js"></script>
+  </body>
+</html>

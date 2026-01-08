@@ -1,0 +1,55 @@
+<!--      Page calendrier:
+- Permet à l'utilisateur de demander une présence pour une date donnée
+- Affiche la liste des demandes de l'utilisateur
+- Tailwind CSS pour le design      -->
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Calendrier — La Plateforme_</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FullCalendar CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.20/index.global.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.20/index.global.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@6.1.20/index.global.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bundle FullCalendar (dist) — ne charge PAS les fichiers core/daygrid/interaction séparés -->
+    <script src="assets/js/index.global.min.js"></script>
+  </head>
+  <body class="bg-gray-100 min-h-screen flex flex-col">
+    <header class="bg-blue-700 text-white p-4">
+      <div class="max-w-6xl mx-auto flex items-center justify-between">
+        <h1 class="text-2xl font-bold">La Plateforme_</h1>
+        <nav><ul id="main-nav" class="flex gap-4"></ul></nav>
+      </div>
+    </header>
+
+    <main class="flex-1 p-8">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-center text-2xl font-bold mb-6">
+          Mon calendrier de présence
+        </h2>
+        <div id="calendar" class="bg-white rounded shadow p-4"></div>
+      </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center p-4">
+      &copy; 2026 La Plateforme_
+    </footer>
+
+    <!-- App scripts -->
+    <script src="assets/js/nav.js"></script>
+    <script src="assets/js/calendar.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1 @@
+alert("Hello Javascript!"); // Affiche une alerte (une fenêtre popup) avec le message "Hello Javascript!"

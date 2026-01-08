@@ -1,0 +1,72 @@
+<!--   Page de connexion utilisateur
+- Formulaire de connexion avec validation JS (login.js)
+- Affichage des erreurs en cas de problème de saisie
+- Tailwind CSS pour le design      -->
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Connexion</title>
+    <!-- Intégration Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 min-h-screen flex flex-col">
+    <!-- Header commun -->
+    <header class="bg-blue-700 text-white p-4 flex items-center justify-between">
+      <h1 class="text-2xl font-bold">La Plateforme_</h1>
+      <nav>
+        <ul id="main-nav" class="flex gap-4">
+          <!-- Liens injectés par JS selon les privilèges utilisateur -->
+        </ul>
+      </nav>
+    </header>
+    <!-- Section principale : formulaire de connexion -->
+    <main class="flex-1 p-8 flex flex-col items-center">
+      <h2 class="text-2xl font-bold mb-6">Connexion</h2>
+      <!-- Formulaire de connexion avec validation JS -->
+      <form id="loginForm" class="bg-white p-6 rounded shadow-md w-full max-w-md space-y-4">
+        <!-- Champ email -->
+        <div>
+          <label for="email" class="block mb-1 font-semibold"
+            >Adresse email</label
+          >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="w-full border rounded px-3 py-2"
+          />
+        </div>
+        <!-- Champ mot de passe -->
+        <div>
+          <label for="password" class="block mb-1 font-semibold"
+            >Mot de passe</label
+          >
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            class="w-full border rounded px-3 py-2"
+          />
+        </div>
+        <!-- Bouton d'envoi -->
+        <button
+          type="submit"
+          class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-800"
+        >
+          Se connecter
+        </button>
+      </form>
+    </main>
+    <!-- Footer commun -->
+    <footer class="bg-gray-800 text-white text-center p-4">
+      &copy; 2026 La Plateforme_
+    </footer>
+    <!-- Scripts JS -->
+    <script src="assets/js/nav.js"></script>
+    <script src="assets/js/login.js"></script>
+  </body>
+</html>

@@ -1,0 +1,424 @@
+/* 
+! CSS Global Jour04 (style pour tous les jobs)
+*/
+
+/* Reset global  */
+   
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+   /* Styles du corps de la page */
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  color: #2c3e50;
+}
+
+
+/* Header */
+
+.header {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2c5aa0 100%);
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* Container */
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  margin: 20px auto;
+}
+
+/* Titres / Sous-titres */
+h2 {
+  color: #ff6b35;
+  font-size: 2rem;
+  margin-top: 40px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #ff6b35;
+  padding-bottom: 8px;
+  letter-spacing: 0.3px;
+}
+
+h3 {
+  color: #ff6b35;
+  font-size: 1.3rem;
+  margin-top: 20px;
+}
+
+/* Style des liens dans les titres h2 */
+
+h2 a {
+  color: #ff6b35;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+h2 a:hover {
+  color: #ff8c55;
+}
+
+
+
+   /* Paragraphes / listes */
+
+p,
+li {
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+ul {
+  margin-left: 30px;
+}
+
+
+
+/* Liens  */
+a {
+  color: #0066cc;
+  text-decoration: none;
+  transition: text-decoration 0.2s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+   /* Balises code (inline) */
+
+code {
+  background: #f4f4f4;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: "Courier New", monospace;
+}
+
+/* bloc de code affiché sur une ligne séparée (les exemples JSON...) */
+
+code.code-block {
+  display: block;
+  background: #f4f4f4;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 10px 0;
+  overflow-x: auto;
+}
+
+
+   /* Classe highlight (texte important) */
+
+.highlight {
+  color: #ff6b35;
+  font-weight: bold;
+}
+/* ============================================================================
+  ! Formulaire de filtrage Pokemon (Json Job 03)
+   ============================================================================ */
+form {
+  margin: 20px 0;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  background: linear-gradient(135deg, #f8f9fb 0%, #f3f4f7 100%);
+  border-radius: 8px;
+  border: 1px solid #e8ebf0;
+}
+
+form label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: #34495e;
+  font-weight: 500;
+}
+
+form input,
+form select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+  color: #2c3e50;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+form input:focus,
+form select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+  border-color: #ff6b35;
+}
+
+form button {
+  padding: 8px 16px;
+  background: #ff6b35;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+}
+
+form button:hover {
+  background: #ff8c55;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+}
+
+form button:active {
+  transform: translateY(0);
+}
+
+/* ============================================================================
+   Tableau des résultats Pokémon - 3 col (Job 03)
+   ============================================================================ */
+.pokemon-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pokemon-table thead {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2c5aa0 100%);
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.pokemon-table th {
+  padding: 14px 12px;
+  text-align: left;
+  font-weight: bold;
+  border-bottom: 2px solid #ff6b35;
+  color: #ffffff;
+}
+
+.pokemon-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  color: #2c3e50;
+  transition: background-color 0.2s ease;
+}
+
+.pokemon-table tbody tr {
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.pokemon-table tbody tr:nth-child(even) {
+  background: #f8f9fb;
+}
+
+.pokemon-table tbody tr:hover {
+  background: #f0f4f8;
+}
+
+/* Cas: aucun résultat */
+.pokemon-table td[colspan] {
+  text-align: center;
+  color: #95a5a6;
+  padding: 30px 12px !important;
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* Colonne Nom fusionnée avec noms sur plusieurs lignes */
+.pokemon-name {
+  font-size: 0.95rem;
+  color: #34495e;
+  line-height: 1.6;
+}
+
+.pokemon-name div {
+  margin: 4px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pokemon-name .flag {
+  margin-right: 6px;
+  font-size: 1.2em;
+  min-width: 20px;
+}
+
+/* ============================================================================
+   Colonnes noms / langue avec drapeaux en background
+   ============================================================================ */
+.pokemon-table td.lang-en::before,
+.pokemon-table td.lang-jp::before,
+.pokemon-table td.lang-cn::before,
+.pokemon-table td.lang-fr::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 16px;
+  margin-right: 8px;
+  vertical-align: middle;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.pokemon-table td.lang-en::before {
+  content: "🇬🇧";
+}
+
+.pokemon-table td.lang-jp::before {
+  content: "🇯🇵";
+}
+
+.pokemon-table td.lang-cn::before {
+  content: "🇨🇳";
+}
+
+.pokemon-table td.lang-fr::before {
+  content: "🇫🇷";
+}
+
+/* ============================================================================
+   Responsive - Job 03
+   ============================================================================ */
+
+/* Mobiles (max 768px) */
+@media (max-width: 768px) {
+  /* Formulaire vertical */
+  form {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  form label {
+    width: 100%;
+  }
+
+  form input,
+  form select,
+  form button {
+    width: 100%;
+  }
+
+  /*  Liste de cartes empilées */
+  .pokemon-table,
+  .pokemon-table thead,
+  .pokemon-table tbody,
+  .pokemon-table tr,
+  .pokemon-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .pokemon-table {
+    border-radius: 0;
+    box-shadow: none;
+    border-top: none;
+  }
+
+  .pokemon-table thead {
+    display: none; /* Masquer l'en-tête du tableau */
+  }
+
+  .pokemon-table tbody tr {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .pokemon-table tbody tr:hover {
+    background: white !important;
+  }
+
+  /* Chaque cellule devient une "ligne" avec étiquette */
+  .pokemon-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: right;
+    position: relative;
+    padding-left: 40%;
+  }
+
+  .pokemon-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 12px;
+    font-weight: 600;
+    color: #ff6b35;
+    text-align: left;
+  }
+
+  /* Pokémon name : afficher sur toute la largeur */
+  .pokemon-table td.pokemon-name {
+    padding-left: 12px;
+    text-align: left;
+  }
+
+  .pokemon-table td.pokemon-name::before {
+    display: none;
+  }
+
+  .pokemon-name div {
+    margin: 6px 0;
+  }
+}
+
+/* Sur très petits écrans (max 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: 20px 10px;
+    border-radius: 0;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .pokemon-table td {
+    padding: 8px 10px;
+    padding-left: 35%;
+    font-size: 0.9rem;
+  }
+
+  .pokemon-name div {
+    margin: 4px 0;
+    font-size: 0.85rem;
+  }
+
+  .pokemon-table th {
+    padding: 10px;
+  }
+}

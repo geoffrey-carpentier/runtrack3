@@ -1,0 +1,173 @@
+[
+  {
+    "id": 1,
+    "email": "admin@laplateforme.io",
+    "nom": "Admin",
+    "prenom": "Admin",
+    "age": 50,
+    "password": "password",
+    "role": "admin"
+  },
+  {
+    "id": 2,
+    "email": "alice@laplateforme.io",
+    "nom": "Dupont",
+    "prenom": "Alice",
+    "age": 25,
+    "password": "hash123",
+    "role": "user"
+  },
+  {
+    "id": 3,
+    "email": "bob@laplateforme.io",
+    "nom": "Martin",
+    "prenom": "Bob",
+    "age": 30,
+    "password": "hash123",
+    "role": "user"
+  },
+  {
+    "id": 4,
+    "email": "charlie@laplateforme.io",
+    "nom": "Durand",
+    "prenom": "Charlie",
+    "age": 28,
+    "password": "hash123",
+    "role": "user"
+  },
+  {
+    "id": 5,
+    "email": "diana@laplateforme.io",
+    "nom": "Lefebvre",
+    "prenom": "Diana",
+    "age": 26,
+    "password": "hash123",
+    "role": "user"
+  },
+  {
+    "id": 6,
+    "email": "ethan@laplateforme.io",
+    "nom": "Rousseau",
+    "prenom": "Ethan",
+    "age": 32,
+    "password": "hash123",
+    "role": "user"
+  },
+  {
+    "id": 7,
+    "email": "john@laplateforme.io",
+    "nom": "Doe",
+    "prenom": "John",
+    "age": 93,
+    "password": "hash123",
+    "role": "user"
+  },
+  {
+    "id": 8,
+    "email": "mod1@laplateforme.io",
+    "nom": "Modérateur",
+    "prenom": "Paul",
+    "age": 40,
+    "password": "hash123",
+    "role": "moderator"
+  },
+  {
+    "id": 9,
+    "email": "mod2@laplateforme.io",
+    "nom": "Modératrice",
+    "prenom": "Sophie",
+    "age": 35,
+    "password": "hash123",
+    "role": "moderator"
+  },
+  {
+    "id": 10,
+    "email": "test1@gmail.com",
+    "nom": "Testeur",
+    "prenom": "Lucas",
+    "age": 22,
+    "password": "hash123",
+    "role": "user"
+  },
+  {
+    "id": 11,
+    "email": "test2@laplateforme.io",
+    "nom": "Test",
+    "prenom": "Emma",
+    "age": 21,
+    "password": "hash123",
+    "role": "user"
+  },
+  {
+    "id": 12,
+    "email": "test3@laplateforme.io",
+    "nom": "Test",
+    "prenom": "Noah",
+    "age": 24,
+    "password": "hash123",
+    "role": "user"
+  },
+  {
+    "id": 13,
+    "email": "invalid.email@autre.com",
+    "nom": "Invalide",
+    "prenom": "Julie",
+    "age": 27,
+    "password": "hash123",
+    "role": "user"
+  },
+  {
+    "id": 14,
+    "email": "admin2@laplateforme.io",
+    "nom": "SuperAdmin",
+    "prenom": "Maxime",
+    "age": 45,
+    "password": "hash123",
+    "role": "admin"
+  },
+  {
+    "id": 15,
+    "email": "mod3@laplateforme.io",
+    "nom": "Modérateur",
+    "prenom": "Clara",
+    "age": 38,
+    "password": "hash123",
+    "role": "moderator"
+  },
+  {
+    "id": 16,
+    "email": "user1@laplateforme.io",
+    "nom": "Utilisateur",
+    "prenom": "Hugo",
+    "age": 20,
+    "password": "hash123",
+    "role": "user"
+  },
+  {
+    "id": 17,
+    "email": "user2@laplateforme.io",
+    "nom": "Utilisateur",
+    "prenom": "Lina",
+    "age": 23,
+    "password": "hash123",
+    "role": "user"
+  },
+    {
+    "id": 18,
+    "email": "prenom.nom@laplateforme.io",
+    "nom": "Nom",
+    "prenom": "Prénom",
+    "age": 50,
+    "password": "password",
+    "role": "user"
+  },
+    {
+    "id": 1,
+    "email": "modo@laplateforme.io",
+    "nom": "Modo",
+    "prenom": "Modo",
+    "age": 8,
+    "password": "password",
+    "role": "moderator"
+  }
+]
