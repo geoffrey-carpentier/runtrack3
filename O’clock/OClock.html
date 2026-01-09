@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O'clock</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
+  <script src="assets/js/clock.js" defer></script>
+  <script src="assets/js/stopwatch.js" defer></script>
+  <script src="assets/js/timer.js" defer></script>
+  <script src="assets/js/alarm.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+</head>
+<body>
+  <header class="navbar">
+    <h1>O'clock</h1>
+    <nav>
+      <button data-view="clock">Horloge</button>
+      <button data-view="stopwatch">Chronomètre</button>
+      <button data-view="timer">Minuteur</button>
+      <button data-view="alarm">Réveil</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="view-clock" class="view active">
+      <h2>Horloge</h2>
+      <div class="digital" id="clock-display">--:--:--</div>
+    </section>
+
+    <section id="view-stopwatch" class="view">
+      <h2>Chronomètre</h2>
+      <div class="digital" id="stopwatch-display">00:00:00.0</div>
+      <div class="actions">
+        <button id="stopwatch-toggle">Start</button>
+        <button id="stopwatch-lap" disabled>Tour</button>
+        <button id="stopwatch-reset" disabled>Reset</button>
+      </div>
+      <ul id="stopwatch-laps"></ul>
+    </section>
+
+    <section id="view-timer" class="view">
+      <h2>Minuteur</h2>
+      <div class="timer-inputs">
+        <button class="timer-dec">−</button>
+        <input type="number" id="timer-minutes" min="0" max="999" value="1">
+        <button class="timer-inc">+</button>
+        <span>minutes</span>
+      </div>
+      <div class="digital" id="timer-display">01:00</div>
+      <div class="actions">
+        <button id="timer-toggle">Start</button>
+        <button id="timer-reset" disabled>Reset</button>
+      </div>
+      <div id="timer-alert" class="alert" hidden>Temps écoulé !</div>
+    </section>
+
+    <section id="view-alarm" class="view">
+      <h2>Réveil</h2>
+      <form id="alarm-form" class="alarm-form">
+        <div class="form-group">
+          <label>Heure</label>
+          <div class="input-pair">
+            <input type="number" id="alarm-hours" min="0" max="23" placeholder="HH" class="alarm-input-small">
+            <select id="alarm-hours-select" class="alarm-select">
+              <option value="">-- Heure --</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Minutes</label>
+          <div class="input-pair">
+            <input type="number" id="alarm-minutes" min="0" max="59" placeholder="MM" class="alarm-input-small">
+            <select id="alarm-minutes-select" class="alarm-select">
+              <option value="">-- Minutes --</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Message</label>
+          <input type="text" id="alarm-label" placeholder="Ex: Prendre le café" class="alarm-input-full">
+        </div>
+
+        <button type="submit" class="btn-submit">Ajouter alarme</button>
+      </form>
+
+      <ul id="alarm-list"></ul>
+      <div class="digital" id="alarm-clock-mirror">--:--:--</div>
+      <div id="alarm-alert" class="alert" hidden></div>
+    </section>
+  </main>
+</body>
+</html>

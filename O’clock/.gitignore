@@ -1,0 +1,5 @@
+# Les elements suivant seront ignorés par Git :
+.help/
+
+
+
