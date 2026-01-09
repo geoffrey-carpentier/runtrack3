@@ -29,26 +29,53 @@ function afficherHorloge() {
 setInterval(afficherHorloge, 1000);
 afficherHorloge(); // affichage immédiat au chargement
 
-// === Minuteur ===
+// === Minuteur amélioré ===
 let tempsMinuteur = 300; // secondes (05:00 par défaut)
 let minuteurInterval = null;
 let minuteurEnMarche = false;
 
-// Affiche le minuteur au format MM:SS
+// Affiche le minuteur au format HH:MM:SS ou MM:SS si < 1h
 function afficherMinuteur() {
-    const m = Math.floor(tempsMinuteur / 60);
-    const s = tempsMinuteur % 60;
-    document.getElementById('minuteur-affichage').textContent = `${formatNumber(m)}:${formatNumber(s)}`;
+    let h = Math.floor(tempsMinuteur / 3600);
+    let m = Math.floor((tempsMinuteur % 3600) / 60);
+    let s = tempsMinuteur % 60;
+    let affichage = h > 0
+        ? `${formatNumber(h)}:${formatNumber(m)}:${formatNumber(s)}`
+        : `${formatNumber(m)}:${formatNumber(s)}`;
+    document.getElementById('minuteur-affichage').textContent = affichage;
+}
+
+// Met à jour les champs HH/MM/SS selon la valeur du minuteur
+function setMinuteurInputsFromSeconds(sec) {
+    let h = Math.floor(sec / 3600);
+    let m = Math.floor((sec % 3600) / 60);
+    let s = sec % 60;
+    document.getElementById('minuteur-hh').value = formatNumber(h);
+    document.getElementById('minuteur-mm').value = formatNumber(m);
+    document.getElementById('minuteur-ss').value = formatNumber(s);
+}
+
+// Récupère la valeur totale en secondes depuis les champs
+function getMinuteurSecondsFromInputs() {
+    let h = parseInt(document.getElementById('minuteur-hh').value, 10) || 0;
+    let m = parseInt(document.getElementById('minuteur-mm').value, 10) || 0;
+    let s = parseInt(document.getElementById('minuteur-ss').value, 10) || 0;
+    h = Math.max(0, Math.min(99, h));
+    m = Math.max(0, Math.min(59, m));
+    s = Math.max(0, Math.min(59, s));
+    return h * 3600 + m * 60 + s;
 }
 
 // Active/désactive les contrôles selon l'état
 function majEtatMinuteur() {
     document.getElementById('minuteur-moins').disabled = minuteurEnMarche || tempsMinuteur <= 0;
     document.getElementById('minuteur-plus').disabled = minuteurEnMarche;
-    document.getElementById('minuteur-input').disabled = minuteurEnMarche;
+    document.getElementById('minuteur-hh').disabled = minuteurEnMarche;
+    document.getElementById('minuteur-mm').disabled = minuteurEnMarche;
+    document.getElementById('minuteur-ss').disabled = minuteurEnMarche;
     document.getElementById('minuteur-start').disabled = minuteurEnMarche || tempsMinuteur <= 0;
     document.getElementById('minuteur-stop').disabled = !minuteurEnMarche;
-    document.getElementById('minuteur-reset').disabled = minuteurEnMarche || tempsMinuteur === 300; // 05:00 (5minutes) par défaut, à définir pour reset 
+    document.getElementById('minuteur-reset').disabled = minuteurEnMarche || tempsMinuteur === 300;
 }
 
 // Démarre le minuteur
@@ -61,6 +88,7 @@ function demarrerMinuteur() {
         if (tempsMinuteur > 0) {
             tempsMinuteur--;
             afficherMinuteur();
+            setMinuteurInputsFromSeconds(tempsMinuteur);
         }
         if (tempsMinuteur === 0) {
             arreterMinuteur();
@@ -79,40 +107,46 @@ function arreterMinuteur() {
 // Remet à zéro (5:00)
 function resetMinuteur() {
     arreterMinuteur();
-    tempsMinuteur = 300; // Temps par défaut après reset.
-    document.getElementById('minuteur-input').value = 5;
+    tempsMinuteur = 300;
+    setMinuteurInputsFromSeconds(tempsMinuteur);
     afficherMinuteur();
     majEtatMinuteur();
     document.getElementById('minuteur-alert').hidden = true;
 }
 
-// Incrémente/décrémente de 1 minute
+// Incrémente/décrémente de 30 secondes
 function augmenterMinuteur() {
     if (minuteurEnMarche) return;
-    tempsMinuteur = Math.min(5999, tempsMinuteur + 30); // max 99:59
-    document.getElementById('minuteur-input').value = Math.floor(tempsMinuteur / 60);
+    tempsMinuteur = Math.min(359999, tempsMinuteur + 30);
+    setMinuteurInputsFromSeconds(tempsMinuteur);
     afficherMinuteur();
     majEtatMinuteur();
 }
 function diminuerMinuteur() {
     if (minuteurEnMarche) return;
-    tempsMinuteur = Math.max(0, tempsMinuteur - 60);
-    document.getElementById('minuteur-input').value = Math.floor(tempsMinuteur / 60);
+    tempsMinuteur = Math.max(0, tempsMinuteur - 30);
+    setMinuteurInputsFromSeconds(tempsMinuteur);
     afficherMinuteur();
     majEtatMinuteur();
 }
 
-// Saisie directe (validation sur Entrée)
-document.getElementById('minuteur-input').addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') {
-        let val = parseInt(this.value, 10);
-        if (isNaN(val) || val < 0) val = 0;
-        if (val > 99) val = 99;
-        tempsMinuteur = val * 60;
+// Validation sur Entrée ou blur
+['minuteur-hh', 'minuteur-mm', 'minuteur-ss'].forEach(id => {
+    document.getElementById(id).addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+            tempsMinuteur = getMinuteurSecondsFromInputs();
+            setMinuteurInputsFromSeconds(tempsMinuteur);
+            afficherMinuteur();
+            majEtatMinuteur();
+            this.blur();
+        }
+    });
+    document.getElementById(id).addEventListener('blur', function () {
+        tempsMinuteur = getMinuteurSecondsFromInputs();
+        setMinuteurInputsFromSeconds(tempsMinuteur);
         afficherMinuteur();
         majEtatMinuteur();
-        this.blur();
-    }
+    });
 });
 
 // Boutons
@@ -123,6 +157,7 @@ document.getElementById('minuteur-stop').addEventListener('click', arreterMinute
 document.getElementById('minuteur-reset').addEventListener('click', resetMinuteur);
 
 // Initialisation minuteur
+setMinuteurInputsFromSeconds(tempsMinuteur);
 afficherMinuteur();
 majEtatMinuteur();
 document.getElementById('minuteur-alert').hidden = true;

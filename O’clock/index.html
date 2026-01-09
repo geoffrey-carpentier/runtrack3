@@ -24,10 +24,37 @@
       <section id="view-minuteur" class="view">
         <h2>Minuteur</h2>
         <div class="minuteur-controls">
+          <input
+            type="number"
+            id="minuteur-hh"
+            min="0"
+            max="99"
+            value="0"
+            style="width: 40px"
+            aria-label="Heures"
+          />
+          <span>:</span>
+          <input
+            type="number"
+            id="minuteur-mm"
+            min="0"
+            max="59"
+            value="5"
+            style="width: 40px"
+            aria-label="Minutes"
+          />
+          <span>:</span>
+          <input
+            type="number"
+            id="minuteur-ss"
+            min="0"
+            max="59"
+            value="0"
+            style="width: 40px"
+            aria-label="Secondes"
+          />
           <button id="minuteur-moins">-</button>
-          <input type="number" id="minuteur-input" min="0" max="99" value="5" />
           <button id="minuteur-plus">+</button>
-          <span>minutes</span>
         </div>
         <div id="minuteur-affichage" class="digital"></div>
         <div class="actions">
