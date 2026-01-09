@@ -289,7 +289,7 @@ function ajouterAlarme(heure, message) {
 }
 
 // Supprime une alarme
-document.getElementById('reveil-list').addEventListener('click', function(e) {
+document.getElementById('reveil-list').addEventListener('click', function (e) {
     if (e.target.classList.contains('btn-suppr')) {
         const idx = e.target.dataset.index;
         alarmes.splice(idx, 1);
@@ -298,7 +298,7 @@ document.getElementById('reveil-list').addEventListener('click', function(e) {
 });
 
 // Formulaire d'ajout
-document.getElementById('reveil-form').addEventListener('submit', function(e) {
+document.getElementById('reveil-form').addEventListener('submit', function (e) {
     e.preventDefault();
     const heure = document.getElementById('reveil-heure').value;
     const message = document.getElementById('reveil-message').value.trim();
