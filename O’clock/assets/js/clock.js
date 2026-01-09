@@ -30,22 +30,29 @@ setInterval(afficherHorloge, 1000);
 afficherHorloge(); // affichage immédiat au chargement
 
 // === Minuteur amélioré ===
-let tempsMinuteur = 300; // secondes (05:00 par défaut)
-let minuteurInterval = null;
-let minuteurEnMarche = false;
+// Variables de gestion du minuteur
+let tempsMinuteur = 300; // Durée du minuteur en secondes (300 par défaut -> 5 minutes)
+let minuteurInterval = null; // Identifiant de l'intervalle de décompte
+let minuteurEnMarche = false; // Indique si le minuteur est en cours d'exécution
 
-// Affiche le minuteur au format HH:MM:SS ou MM:SS si < 1h
+/**
+ * Affiche le minuteur au format HH:MM:SS, ou MM:SS si moins d'une heure au compteur
+ */
 function afficherMinuteur() {
     let h = Math.floor(tempsMinuteur / 3600);
     let m = Math.floor((tempsMinuteur % 3600) / 60);
     let s = tempsMinuteur % 60;
+    // Affichage adaptatif : HH:MM:SS si h > 0, sinon MM:SS
     let affichage = h > 0
         ? `${formatNumber(h)}:${formatNumber(m)}:${formatNumber(s)}`
         : `${formatNumber(m)}:${formatNumber(s)}`;
     document.getElementById('minuteur-affichage').textContent = affichage;
 }
 
-// Met à jour les champs HH/MM/SS selon la valeur du minuteur
+/**
+ * Met à jour les champs HH/MM/SS selon la valeur du minuteur.
+ * @param {number} sec - Nombre de secondes à convertir
+ */
 function setMinuteurInputsFromSeconds(sec) {
     let h = Math.floor(sec / 3600);
     let m = Math.floor((sec % 3600) / 60);
@@ -55,7 +62,10 @@ function setMinuteurInputsFromSeconds(sec) {
     document.getElementById('minuteur-ss').value = formatNumber(s);
 }
 
-// Récupère la valeur totale en secondes depuis les champs
+/**
+ * Récupère la valeur totale en secondes depuis les champs HH/MM/SS.
+ * @returns {number} Nombre total de secondes
+ */
 function getMinuteurSecondsFromInputs() {
     let h = parseInt(document.getElementById('minuteur-hh').value, 10) || 0;
     let m = parseInt(document.getElementById('minuteur-mm').value, 10) || 0;
@@ -252,41 +262,72 @@ majEtatChrono();
 let alarmes = []; // {heure: "HH:MM", message: "...", declenchee: false}
 let reveilInterval = null;
 
+// Ajoute une alarme (planifie pour demain si heure déjà passée)
+function ajouterAlarme(heure, message) {
+    const now = new Date();
+    let [h, m] = heure.split(':').map(Number);
+    let alarmeDate = new Date(now);
+    alarmeDate.setHours(h, m, 0, 0);
+    if (alarmeDate <= now) {
+        // Si l'heure est déjà passée aujourd'hui, planifier pour demain
+        alarmeDate.setDate(alarmeDate.getDate() + 1);
+    }
+    alarmes.push({ heure, message, declenchee: false, timestamp: alarmeDate.getTime() });
+    afficherAlarmes();
+}
+
 // Affiche la liste des alarmes
 function afficherAlarmes() {
     const ul = document.getElementById('reveil-list');
     ul.innerHTML = "";
-    const now = new Date();
-    const nowHM = `${formatNumber(now.getHours())}:${formatNumber(now.getMinutes())}`;
+    const now = Date.now();
     alarmes.forEach((a, i) => {
-        // Calcul du statut
+        let diff = Math.floor((a.timestamp - now) / 1000); // en secondes
         let statut = "";
-        let [h, m] = a.heure.split(':').map(Number);
-        let alarmeDate = new Date(now);
-        alarmeDate.setHours(h, m, 0, 0);
-        let diff = (alarmeDate - now) / 1000; // en secondes
         if (a.declenchee) {
             statut = `<span class="badge badge-past">passée</span>`;
         } else if (diff > 0) {
             let hRest = Math.floor(diff / 3600);
-            let mRest = Math.floor((diff % 3600) / 60);
+            let mRest = Math.floor((diff % 3600) / 60) % 60;
             statut = `<span class="badge badge-future">dans ${hRest > 0 ? hRest + "h " : ""}${mRest}min</span>`;
         } else {
             statut = `<span class="badge badge-past">passée</span>`;
         }
+        // Affichage HH:MM (prochaine occurrence)
+        let d = new Date(a.timestamp);
+        let hAff = formatNumber(d.getHours());
+        let mAff = formatNumber(d.getMinutes());
         ul.innerHTML += `<li>
-            <span>${a.heure} - ${a.message}</span>
+            <span>${hAff}:${mAff} - ${a.message}</span>
             ${statut}
             <button class="btn-suppr" data-index="${i}" title="Supprimer">&#10006;</button>
         </li>`;
     });
 }
 
-// Ajoute une alarme
-function ajouterAlarme(heure, message) {
-    alarmes.push({ heure, message, declenchee: false });
-    afficherAlarmes();
+// Vérifie chaque seconde si une alarme doit se déclencher
+function verifierAlarmes() {
+    const now = Date.now();
+    alarmes.forEach((a) => {
+        // Si l'alarme n'a pas encore été déclenchée et que l'heure est atteinte
+        if (!a.declenchee && Math.abs(a.timestamp - now) < 1000) {
+            a.declenchee = true; // Marquer comme déclenchée
+            afficherAlarmes();    // Mettre à jour la liste
+            afficherAlerteReveil(a.message); // Afficher l'alerte
+            // On NE SUPPRIME PLUS l'alarme, elle reste dans la liste avec le statut "passée"
+        }
+    });
 }
+
+
+// Affiche l'alerte réveil (non-popup)
+function afficherAlerteReveil(msg) {
+    const alertDiv = document.getElementById('reveil-alert');
+    alertDiv.textContent = msg;
+    alertDiv.hidden = false;
+    setTimeout(() => { alertDiv.hidden = true; }, 8000);
+}
+
 
 // Supprime une alarme
 document.getElementById('reveil-list').addEventListener('click', function (e) {
@@ -307,4 +348,7 @@ document.getElementById('reveil-form').addEventListener('submit', function (e) {
     this.reset();
 });
 
-// ...la suite (déclenchement) viendra après...
+// Lancer la vérification cyclique
+if (!reveilInterval) {
+    reveilInterval = setInterval(verifierAlarmes, 1000);
+}
