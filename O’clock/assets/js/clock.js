@@ -162,4 +162,149 @@ afficherMinuteur();
 majEtatMinuteur();
 document.getElementById('minuteur-alert').hidden = true;
 
-// Modules horloge | minuteur | chrono | réveil à venir.
+// === Chronomètre ===
+let tempsChrono = 0; // secondes
+let chronoInterval = null;
+let chronoEnMarche = false;
+let tours = [];
+let chronoEtat = "initial"; // "initial", "marche", "pause"
+
+// Affiche le chrono au format HH:MM:SS
+function afficherChrono() {
+    let h = Math.floor(tempsChrono / 3600);
+    let m = Math.floor((tempsChrono % 3600) / 60);
+    let s = tempsChrono % 60;
+    document.getElementById('chrono-affichage').textContent =
+        `${formatNumber(h)}:${formatNumber(m)}:${formatNumber(s)}`;
+}
+
+// Met à jour les boutons selon l'état
+function majEtatChrono() {
+    document.getElementById('chrono-toggle').textContent =
+        chronoEtat === "marche" ? "Arrêter" : (chronoEtat === "pause" ? "Reprendre" : "Démarrer");
+    document.getElementById('chrono-tour').disabled = !chronoEnMarche;
+    document.getElementById('chrono-reset').disabled = chronoEtat === "initial";
+}
+
+// Démarre ou reprend le chrono
+function demarrerChrono() {
+    if (chronoEnMarche) return;
+    chronoEnMarche = true;
+    chronoEtat = "marche";
+    majEtatChrono();
+    chronoInterval = setInterval(() => {
+        tempsChrono++;
+        afficherChrono();
+    }, 1000);
+}
+
+// Arrête le chrono (pause)
+function arreterChrono() {
+    chronoEnMarche = false;
+    chronoEtat = "pause";
+    clearInterval(chronoInterval);
+    majEtatChrono();
+}
+
+// Reset chrono
+function resetChrono() {
+    arreterChrono();
+    tempsChrono = 0;
+    tours = [];
+    chronoEtat = "initial";
+    afficherChrono();
+    majEtatChrono();
+    document.getElementById('chrono-tours').innerHTML = "";
+}
+
+// Enregistre un tour
+function enregistrerTour() {
+    if (!chronoEnMarche) return;
+    tours.push(tempsChrono);
+    afficherTours();
+}
+
+// Affiche la liste des tours
+function afficherTours() {
+    const ul = document.getElementById('chrono-tours');
+    ul.innerHTML = "";
+    tours.forEach((t, i) => {
+        let h = Math.floor(t / 3600);
+        let m = Math.floor((t % 3600) / 60);
+        let s = t % 60;
+        ul.innerHTML += `<li>Tour ${i + 1} <span>${formatNumber(h)}:${formatNumber(m)}:${formatNumber(s)}</span></li>`;
+    });
+}
+
+// Boutons
+document.getElementById('chrono-toggle').addEventListener('click', function () {
+    if (chronoEtat === "initial" || chronoEtat === "pause") demarrerChrono();
+    else arreterChrono();
+});
+document.getElementById('chrono-tour').addEventListener('click', enregistrerTour);
+document.getElementById('chrono-reset').addEventListener('click', resetChrono);
+
+// Initialisation chrono
+afficherChrono();
+majEtatChrono();
+
+// === Réveil ===
+let alarmes = []; // {heure: "HH:MM", message: "...", declenchee: false}
+let reveilInterval = null;
+
+// Affiche la liste des alarmes
+function afficherAlarmes() {
+    const ul = document.getElementById('reveil-list');
+    ul.innerHTML = "";
+    const now = new Date();
+    const nowHM = `${formatNumber(now.getHours())}:${formatNumber(now.getMinutes())}`;
+    alarmes.forEach((a, i) => {
+        // Calcul du statut
+        let statut = "";
+        let [h, m] = a.heure.split(':').map(Number);
+        let alarmeDate = new Date(now);
+        alarmeDate.setHours(h, m, 0, 0);
+        let diff = (alarmeDate - now) / 1000; // en secondes
+        if (a.declenchee) {
+            statut = `<span class="badge badge-past">passée</span>`;
+        } else if (diff > 0) {
+            let hRest = Math.floor(diff / 3600);
+            let mRest = Math.floor((diff % 3600) / 60);
+            statut = `<span class="badge badge-future">dans ${hRest > 0 ? hRest + "h " : ""}${mRest}min</span>`;
+        } else {
+            statut = `<span class="badge badge-past">passée</span>`;
+        }
+        ul.innerHTML += `<li>
+            <span>${a.heure} - ${a.message}</span>
+            ${statut}
+            <button class="btn-suppr" data-index="${i}" title="Supprimer">&#10006;</button>
+        </li>`;
+    });
+}
+
+// Ajoute une alarme
+function ajouterAlarme(heure, message) {
+    alarmes.push({ heure, message, declenchee: false });
+    afficherAlarmes();
+}
+
+// Supprime une alarme
+document.getElementById('reveil-list').addEventListener('click', function(e) {
+    if (e.target.classList.contains('btn-suppr')) {
+        const idx = e.target.dataset.index;
+        alarmes.splice(idx, 1);
+        afficherAlarmes();
+    }
+});
+
+// Formulaire d'ajout
+document.getElementById('reveil-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const heure = document.getElementById('reveil-heure').value;
+    const message = document.getElementById('reveil-message').value.trim();
+    if (!heure || !message) return;
+    ajouterAlarme(heure, message);
+    this.reset();
+});
+
+// ...la suite (déclenchement) viendra après...
