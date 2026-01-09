@@ -1,5 +1,7 @@
-# Les elements suivant seront ignorés par Git :
-.help/
+# LISTE des fichiers et dossiers à ignorer par Git (commenter une ligne pour ne plus l'ignorer )
 
+.help/
+# *.pdf
+*.md
 
 

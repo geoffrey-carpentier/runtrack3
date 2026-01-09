@@ -1,0 +1,127 @@
+:root {
+  --bleu: #2c5aa0;
+  --orange: #e85d10;
+  --gris: #2c3e50;
+  --radius: 10px;
+  --font: "Roboto Mono", monospace;
+}
+body {
+  margin: 0;
+  background: var(--gris);
+  color: #fff;
+  font-family: "Roboto", Arial, sans-serif;
+}
+header nav {
+  display: flex;
+  gap: 10px;
+  background: var(--bleu);
+  padding: 12px;
+}
+nav button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+nav button.active,
+nav button:hover {
+  background: var(--orange);
+  color: #fff;
+}
+main {
+  max-width: 480px;
+  margin: 30px auto;
+  padding: 0 10px;
+}
+.view {
+  display: none;
+}
+.view.active {
+  display: block;
+}
+.digital {
+  font-family: var(--font);
+  font-size: 2.5rem;
+  text-align: center;
+  margin: 20px 0;
+  letter-spacing: 2px;
+}
+.minuteur-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.minuteur-controls input {
+  width: 60px;
+  text-align: center;
+  font-size: 1.2rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--bleu);
+  padding: 6px;
+}
+.minuteur-controls button {
+  font-size: 1.2rem;
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--bleu);
+  background: var(--bleu);
+  color: #fff;
+  cursor: pointer;
+}
+.actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.actions button {
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  border: none;
+  background: var(--orange);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+.actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.alert {
+  background: var(--orange);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 10px;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+#chrono-tours li,
+#reveil-list li {
+  background: #22304a;
+  margin: 6px 0;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (max-width: 600px) {
+  main {
+    max-width: 100%;
+  }
+  .digital {
+    font-size: 2rem;
+  }
+}
