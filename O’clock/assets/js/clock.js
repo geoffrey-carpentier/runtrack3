@@ -1,9 +1,14 @@
-// Horloge numérique
+   //! ======================= !\\
+  //!     Horloge numérique     !\\
+ //! =========================== !\\
 
-// Fonctions utilitaires
-function formatNumber(n) { return n < 10 ? '0' + n : n; }
+// Formater les nombres pour affichage cohérent sur l'horloge: sur 2 chiffres 
 
-// Navigation SPA
+function formatNumber(n) { return n < 10 ? '0' + n : n; } // Si le nombre est <10, ajout d'un 0 devant (ex: 7 -> 07 )
+
+
+// Gère la navigation SPA (Single Page App) : affiche la section demandée et active le bouton correspondant
+ 
 document.querySelectorAll('nav button').forEach(btn => {
     btn.addEventListener('click', () => {
         document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
@@ -13,7 +18,9 @@ document.querySelectorAll('nav button').forEach(btn => {
     });
 });
 
-// Horloge numérique (HH:MM:SS, heure française, MAJ chaque seconde)
+
+//  Affiche l'heure (Europe/Paris) au format HH:MM:SS, mise à jour chaque seconde (GMT+1/2 géré automatiquement)
+
 function afficherHorloge() {
     // Heure française (Europe/Paris, gère UTC+1/UTC+2 automatiquement)
     const maintenant = new Date();
@@ -24,20 +31,22 @@ function afficherHorloge() {
         .map(p => p.value.padStart(2, '0'));
     document.getElementById('horloge-affichage').textContent = `${h}:${m}:${s}`;
 }
-
-// Lancer la mise à jour de l'horloge toutes les secondes
+// Mise à jour de l'horloge toutes les secondes (1000 ms)
 setInterval(afficherHorloge, 1000);
-afficherHorloge(); // affichage immédiat au chargement
+afficherHorloge(); // Affichage immédiat au chargement du DOM
 
-// === Minuteur amélioré ===
+//! ========== !\\
+//!  Minuteur  !\\
+//! ========== !\\
+
 // Variables de gestion du minuteur
-let tempsMinuteur = 300; // Durée du minuteur en secondes (300 par défaut -> 5 minutes)
+let tempsMinuteur = 300; // Durée du minuteur en secondes (ici, initialisé à 300 s par défaut -> 5 minutes)
 let minuteurInterval = null; // Identifiant de l'intervalle de décompte
 let minuteurEnMarche = false; // Indique si le minuteur est en cours d'exécution
 
-/**
- * Affiche le minuteur au format HH:MM:SS, ou MM:SS si moins d'une heure au compteur
- */
+
+//  Affiche le minuteur au format HH:MM:SS, ou MM:SS si moins d'une heure au compteur
+ 
 function afficherMinuteur() {
     let h = Math.floor(tempsMinuteur / 3600);
     let m = Math.floor((tempsMinuteur % 3600) / 60);
@@ -49,10 +58,9 @@ function afficherMinuteur() {
     document.getElementById('minuteur-affichage').textContent = affichage;
 }
 
-/**
- * Met à jour les champs HH/MM/SS selon la valeur du minuteur.
- * @param {number} sec - Nombre de secondes à convertir
- */
+
+// Mise à jour des champs HH/MM/SS en fonction de la valeur du minuteur.
+
 function setMinuteurInputsFromSeconds(sec) {
     let h = Math.floor(sec / 3600);
     let m = Math.floor((sec % 3600) / 60);
@@ -62,10 +70,9 @@ function setMinuteurInputsFromSeconds(sec) {
     document.getElementById('minuteur-ss').value = formatNumber(s);
 }
 
-/**
- * Récupère la valeur totale en secondes depuis les champs HH/MM/SS.
- * @returns {number} Nombre total de secondes
- */
+
+// Calculer le temps du Timer en secondes depuis les valeur des champs HH/MM/SS.
+
 function getMinuteurSecondsFromInputs() {
     let h = parseInt(document.getElementById('minuteur-hh').value, 10) || 0;
     let m = parseInt(document.getElementById('minuteur-mm').value, 10) || 0;
@@ -76,7 +83,9 @@ function getMinuteurSecondsFromInputs() {
     return h * 3600 + m * 60 + s;
 }
 
-// Active/désactive les contrôles selon l'état
+
+// Activer/désactiver les contrôles du minuteur selon l'état courant (boutons +/-/start/stop/reset et inputs HH/MM/SS)
+
 function majEtatMinuteur() {
     document.getElementById('minuteur-moins').disabled = minuteurEnMarche || tempsMinuteur <= 0;
     document.getElementById('minuteur-plus').disabled = minuteurEnMarche;
@@ -88,7 +97,9 @@ function majEtatMinuteur() {
     document.getElementById('minuteur-reset').disabled = minuteurEnMarche || tempsMinuteur === 300;
 }
 
-// Démarre le minuteur
+
+// Démarrer le minuteur (lancer le décompte)
+
 function demarrerMinuteur() {
     if (minuteurEnMarche || tempsMinuteur <= 0) return;
     minuteurEnMarche = true;
@@ -107,51 +118,61 @@ function demarrerMinuteur() {
     }, 1000);
 }
 
-// Arrête le minuteur
+
+// Arrêter le minuteur (le mettre en pause)
+
 function arreterMinuteur() {
     minuteurEnMarche = false;
     clearInterval(minuteurInterval);
     majEtatMinuteur();
 }
 
-// Remet à zéro (5:00)
+
+// RESET: Remettre le minuteur à zéro (en fait à 05:00, par défaut)
+
 function resetMinuteur() {
     arreterMinuteur();
-    tempsMinuteur = 300;
+    tempsMinuteur = 300; // Valeur par défaut pour la fonction RESET du timer (en secondes)
     setMinuteurInputsFromSeconds(tempsMinuteur);
     afficherMinuteur();
     majEtatMinuteur();
     document.getElementById('minuteur-alert').hidden = true;
 }
 
-// Incrémente/décrémente de 30 secondes
+
+// Incrémenter le minuteur de n secondes (max 99:59:59)
+
 function augmenterMinuteur() {
     if (minuteurEnMarche) return;
-    tempsMinuteur = Math.min(359999, tempsMinuteur + 30);
-    setMinuteurInputsFromSeconds(tempsMinuteur);
-    afficherMinuteur();
-    majEtatMinuteur();
-}
-function diminuerMinuteur() {
-    if (minuteurEnMarche) return;
-    tempsMinuteur = Math.max(0, tempsMinuteur - 30);
+    tempsMinuteur = Math.min(359999, tempsMinuteur + 30);  // ici, on ajoute 30 secondes à chaque clic (n=30)
     setMinuteurInputsFromSeconds(tempsMinuteur);
     afficherMinuteur();
     majEtatMinuteur();
 }
 
-// Validation sur Entrée ou blur
+
+// Décrémenter le minuteur de n secondes (min 0)
+
+function diminuerMinuteur() {
+    if (minuteurEnMarche) return;
+    tempsMinuteur = Math.max(0, tempsMinuteur - 30); // ici, on soustrait 30 secondes à chaque clic (n=30)
+    setMinuteurInputsFromSeconds(tempsMinuteur);
+    afficherMinuteur();
+    majEtatMinuteur();
+}
+
+// Validation sur Entrée ou blur pour chaque champ HH/MM/SS
 ['minuteur-hh', 'minuteur-mm', 'minuteur-ss'].forEach(id => {
     document.getElementById(id).addEventListener('keydown', function (e) {
-        if (e.key === 'Enter') {
+        if (e.key === 'Enter') { // La touche de validation est "Entrée"
             tempsMinuteur = getMinuteurSecondsFromInputs();
             setMinuteurInputsFromSeconds(tempsMinuteur);
             afficherMinuteur();
             majEtatMinuteur();
-            this.blur();
+            this.blur(); // Après validation, on enlève le focus de l'input
         }
     });
-    document.getElementById(id).addEventListener('blur', function () {
+    document.getElementById(id).addEventListener('blur', function () { //
         tempsMinuteur = getMinuteurSecondsFromInputs();
         setMinuteurInputsFromSeconds(tempsMinuteur);
         afficherMinuteur();
@@ -159,36 +180,52 @@ function diminuerMinuteur() {
     });
 });
 
-// Boutons
+// Gestion des boutons du minuteur (+/-, start, stop, reset)
 document.getElementById('minuteur-moins').addEventListener('click', diminuerMinuteur);
 document.getElementById('minuteur-plus').addEventListener('click', augmenterMinuteur);
 document.getElementById('minuteur-start').addEventListener('click', demarrerMinuteur);
 document.getElementById('minuteur-stop').addEventListener('click', arreterMinuteur);
 document.getElementById('minuteur-reset').addEventListener('click', resetMinuteur);
 
-// Initialisation minuteur
+// Initialisation du minuteur au chargement
 setMinuteurInputsFromSeconds(tempsMinuteur);
 afficherMinuteur();
 majEtatMinuteur();
 document.getElementById('minuteur-alert').hidden = true;
 
-// === Chronomètre ===
-let tempsChrono = 0; // secondes
-let chronoInterval = null;
-let chronoEnMarche = false;
-let tours = [];
-let chronoEtat = "initial"; // "initial", "marche", "pause"
+//! ============= !\\
+//!  Chronomètre  !\\
+//! ============= !\\
 
-// Affiche le chrono au format HH:MM:SS
+// Variables pour gestion du chronomètre
+let tempsChrono = 0; // le nombre desecondes écoulées
+let chronoInterval = null; // Identifiant de l'intervalle du chrono (null si le chrono est arrêté)
+let chronoEnMarche = false; // Indicateur de l'état du chrono 
+let tours = []; // Liste des temps de passage (tours)
+let chronoEtat = "initial"; // Etat du chrono (états possible: "initial", "marche", "pause")
+
+
+// Afficher le chrono au format HH:MM:SS
+
 function afficherChrono() {
     let h = Math.floor(tempsChrono / 3600);
     let m = Math.floor((tempsChrono % 3600) / 60);
     let s = tempsChrono % 60;
     document.getElementById('chrono-affichage').textContent =
         `${formatNumber(h)}:${formatNumber(m)}:${formatNumber(s)}`;
+
+//# A VOIR:  Affichage adaptatif : HH:MM:SS si h > 0, sinon MM:SS
+//     let affichage = h > 0
+//         ? `${formatNumber(h)}:${formatNumber(m)}:${formatNumber(s)}`
+//         : `${formatNumber(m)}:${formatNumber(s)}`;
+//     document.getElementById('minuteur-affichage').textContent = affichage;
 }
 
-// Met à jour les boutons selon l'état
+
+
+
+// Mise à jour des boutons du chrono selon l'état courant
+
 function majEtatChrono() {
     document.getElementById('chrono-toggle').textContent =
         chronoEtat === "marche" ? "Arrêter" : (chronoEtat === "pause" ? "Reprendre" : "Démarrer");
@@ -196,7 +233,7 @@ function majEtatChrono() {
     document.getElementById('chrono-reset').disabled = chronoEtat === "initial";
 }
 
-// Démarre ou reprend le chrono
+// Démarrer/reprendre le chrono
 function demarrerChrono() {
     if (chronoEnMarche) return;
     chronoEnMarche = true;
@@ -208,7 +245,7 @@ function demarrerChrono() {
     }, 1000);
 }
 
-// Arrête le chrono (pause)
+// Mettre le chrono en pause
 function arreterChrono() {
     chronoEnMarche = false;
     chronoEtat = "pause";
@@ -216,7 +253,9 @@ function arreterChrono() {
     majEtatChrono();
 }
 
-// Reset chrono
+
+// Remet le chronomètre à zéro et efface les tours
+
 function resetChrono() {
     arreterChrono();
     tempsChrono = 0;
@@ -227,14 +266,16 @@ function resetChrono() {
     document.getElementById('chrono-tours').innerHTML = "";
 }
 
-// Enregistre un tour
+
+// Enregistre un tour (mémorise le temps au clic sur "Tour")
+
 function enregistrerTour() {
     if (!chronoEnMarche) return;
     tours.push(tempsChrono);
     afficherTours();
 }
 
-// Affiche la liste des tours
+// Affiche la liste des temps (tours) enregistrés
 function afficherTours() {
     const ul = document.getElementById('chrono-tours');
     ul.innerHTML = "";
@@ -246,7 +287,7 @@ function afficherTours() {
     });
 }
 
-// Boutons
+// Gestion des boutons du chrono (démarrer/arreter toogle)
 document.getElementById('chrono-toggle').addEventListener('click', function () {
     if (chronoEtat === "initial" || chronoEtat === "pause") demarrerChrono();
     else arreterChrono();
@@ -254,35 +295,40 @@ document.getElementById('chrono-toggle').addEventListener('click', function () {
 document.getElementById('chrono-tour').addEventListener('click', enregistrerTour);
 document.getElementById('chrono-reset').addEventListener('click', resetChrono);
 
-// Initialisation chrono
+// Initialisation du chrono au chargement de la page
 afficherChrono();
 majEtatChrono();
 
-// === Réveil ===
-let alarmes = []; // {heure: "HH:MM", message: "...", declenchee: false}
-let reveilInterval = null;
+//! ====== !\\
+//! Réveil !\\
+//! ====== !\\
 
-// Ajoute une alarme (planifie pour demain si heure déjà passée)
+// Variables pour gestion des alarmes du réveil
+let alarmes = []; // Liste des alarmes {heure: "HH:MM" | message: "...", passée | bouton X}
+let reveilInterval = null; // Identifiant de l'intervalle de vérification
+
+// Ajoute une alarme à la liste (reportée au lendemain si l'heure est déjà passée)
+
 function ajouterAlarme(heure, message) {
     const now = new Date();
     let [h, m] = heure.split(':').map(Number);
     let alarmeDate = new Date(now);
     alarmeDate.setHours(h, m, 0, 0);
     if (alarmeDate <= now) {
-        // Si l'heure est déjà passée aujourd'hui, planifier pour demain
+        // Si l'heure est déjà passée aujourd'hui, la planifier pour demain
         alarmeDate.setDate(alarmeDate.getDate() + 1);
     }
     alarmes.push({ heure, message, declenchee: false, timestamp: alarmeDate.getTime() });
     afficherAlarmes();
 }
 
-// Affiche la liste des alarmes
+// Affiche la liste des alarmes avec leur statut (passée ou dans XHeures-Yminutes)
 function afficherAlarmes() {
     const ul = document.getElementById('reveil-list');
     ul.innerHTML = "";
     const now = Date.now();
     alarmes.forEach((a, i) => {
-        let diff = Math.floor((a.timestamp - now) / 1000); // en secondes
+        let diff = Math.floor((a.timestamp - now) / 1000); // Différence en secondes
         let statut = "";
         if (a.declenchee) {
             statut = `<span class="badge badge-past">passée</span>`;
@@ -306,6 +352,7 @@ function afficherAlarmes() {
 }
 
 // Vérifie chaque seconde si une alarme doit se déclencher
+
 function verifierAlarmes() {
     const now = Date.now();
     alarmes.forEach((a) => {
@@ -320,7 +367,7 @@ function verifierAlarmes() {
 }
 
 
-// Affiche l'alerte réveil (non-popup)
+// Affiche une alerte visuelle pour le réveil (message personnalisé)
 function afficherAlerteReveil(msg) {
     const alertDiv = document.getElementById('reveil-alert');
     alertDiv.textContent = msg;
@@ -328,8 +375,7 @@ function afficherAlerteReveil(msg) {
     setTimeout(() => { alertDiv.hidden = true; }, 8000);
 }
 
-
-// Supprime une alarme
+// Suppression d'une alarme via un bouton X
 document.getElementById('reveil-list').addEventListener('click', function (e) {
     if (e.target.classList.contains('btn-suppr')) {
         const idx = e.target.dataset.index;
@@ -338,7 +384,7 @@ document.getElementById('reveil-list').addEventListener('click', function (e) {
     }
 });
 
-// Formulaire d'ajout
+// Gestion du formulaire d'ajout d'alarme
 document.getElementById('reveil-form').addEventListener('submit', function (e) {
     e.preventDefault();
     const heure = document.getElementById('reveil-heure').value;
@@ -348,7 +394,7 @@ document.getElementById('reveil-form').addEventListener('submit', function (e) {
     this.reset();
 });
 
-// Lancer la vérification cyclique
+// Lancer la vérification cyclique des alarmes (toutes les secondes)
 if (!reveilInterval) {
     reveilInterval = setInterval(verifierAlarmes, 1000);
 }
