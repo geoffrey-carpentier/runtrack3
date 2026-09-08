@@ -1,0 +1,78 @@
+/* Simplified CSS : palette et target strictement identiques, images occupent toute la case */
+:root {
+  --container-w: min(1100px, 92vw);
+  --slot-gap: 8px;
+  --slot-h: 35vh; /* augmenté : occupe 35% de la hauteur viewport */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* containers identiques et spacieux */
+.target,
+.palette {
+  width: var(--container-w);
+  margin: 16px auto;
+  padding: 10px; /* minimal padding */
+  background: #fafafa;
+  border-radius: 8px;
+  display: flex;
+  gap: var(--slot-gap);
+  align-items: stretch;
+  justify-content: center;
+  height: var(--slot-h);
+  overflow: hidden;
+}
+
+/* 6 cases strictes sans marges internes */
+.slot,
+.palette > img {
+  flex: 1 1 0;
+  border: 1px dashed #ddd;
+  border-radius: 6px;
+  background: #fff;
+  overflow: hidden;
+}
+
+/* images remplissent 100% du slot sans marges */
+.palette > img,
+.slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* feedbacks */
+.slot-hover {
+  outline: 3px dashed #89c4f4;
+}
+.slot.dropped {
+  box-shadow: 0 4px 12px rgba(34, 150, 0, 0.1);
+}
+
+/* victoire */
+.target.win {
+  gap: 0;
+  border-color: #28a745;
+  box-shadow: 0 8px 24px rgba(40, 167, 69, 0.1);
+}
+.target.win .slot {
+  border: 0;
+  border-radius: 0;
+}
+.target.win .slot img {
+  width: 101%;
+  height: 101%;
+  object-fit: cover;
+}
+
+/* transitions */
+.target .slot,
+.target .slot img,
+.palette > img {
+  transition: all 140ms ease;
+}
