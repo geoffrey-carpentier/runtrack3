@@ -1,5 +1,3 @@
-
-
 // Sélectionne l'élément HTML avec l'id "keylogger" ('textarea') et le stocke dans une variable.
 // Cela permet de manipuler facilement le textarea plus tard dans le code.
 // Cette ligne est exécutée au chargement du script, donc le DOM doit être prêt (grâce à 'defer' dans <script>).
@@ -41,29 +39,3 @@ console.log(keylogger);
 // 'keypress' est déclenché quand une touche est pressée et relâchée.
 // La fonction 'addText' sera appelée à chaque 'keypress', avec l'événement comme argument.
 window.addEventListener('keypress', addText);
-
-
-//! Alternative
-
-/*
-const keylogger=- = document.getElementById("keylogger");
-
-  if (keylogger) {
-    function addText(e) {
-      console.log(e);
-        e.preventDefault();
-
-        //* DEBUG * console.log(document.activeElement);
-
-        //? Fonction ternaire
-        //? Si on a le focus sur keylogger
-        //? Alors on reprend la valeur de textarea et on y ajoute la touche deux fois
-        //? Sinon, on reprend la valeur de textarea et on y ajoute la touche une seule fois
-keylogger.value =
-  document.activeElement.id === "keylogger"
-    ? // Si
-        keylogger.value + e.key + e.key //! Le + sert à concaténer
-    : // Sinon
-        keylogger.value + e.key;
-    
-window.addEventListener("keypress", (e) => addText(e)); // Ecouteur
